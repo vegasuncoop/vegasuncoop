@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es-ES" dir="ltr">
+<head>
+	<!-- Caracteres universales, incluye prácticamente cualquier caracter de cualquier idioma-->
+	<meta charset="UTF-8" />
+	<!-- Compatibilidad de Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+	<!-- Forzamos a que el ancho de la página se adapte al dispositivo-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">     
+			
+	<title>Vegasun coop.</title>
+	<meta name="description" content="Cooperativa Vegasun, obrador vegano"/> 
+	
+	<link href="https://fonts.googleapis.com/css?family=Space+Mono|Work+Sans:900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css" />
+	
+	<style>
+	body{
+        padding:0;margin:0;border:0;
+        min-height:100vh; 
+		width:100%;
+		height:100%;
+        overflow: auto;
+        display: block;
+		font-family: 'Space Mono', monospace;		
+
+    }
+	h1,h2,h3,h4,h5,h6{
+		font-family: 'Work Sans', sans-serif;
+	}
+	h1,h2{
+		text-transform:uppercase;		
+		margin: 0;
+		text-align:center;
+	}
+	h1{
+		font-size:4.6rem;
+		color: #6E675F;		
+		text-shadow: 1px 1px 2px #111;
+	}
+	h2{
+		font-size:3.2rem;	
+		margin-top: 20px;	
+		color: #7bae16;		
+		text-shadow: 1px 1px 2px #423E37;
+	}
+	h3{
+	  
+		font-size: 2.6rem;
+		color: #fcac04;
+		text-shadow: 1px 1px 2px #423E37;
+		text-align:center;
+	}
+	.container{min-height: 100vh;}
+	img{
+		width: 100%;
+		display: block;
+		height: auto;
+		position: relative;
+		left: 0;
+		right: 0;		
+		top: 0;
+		bottom: 0;
+	}
+	
+	nav {
+		background-color: #fff; 
+	}
+	
+	nav .brand-logo {  
+		width: 100px; 
+	}
+
+	nav a, nav ul a { 
+		color: #333;   
+	}
+	.btn-floating {
+	    width: 50px;
+		height: 50px;
+		line-height: 50px;		
+		background-color: #7bae16;
+	}
+	.btn-floating i {
+		width: inherit;
+		display: inline-block;	
+		color: #6E675F;
+		font-size: 1.6rem;
+		line-height: 54px;
+	}
+	.btn-floating.halfway-fab {
+		bottom: 70px;
+		position: absolute;
+		left: 44%;	   
+	}
+	.btn-floating:hover {
+		background-color: #fcac04;
+	}
+	.card .card-content {
+		padding: 24px;
+		border-radius: 0 0 2px 2px;	
+		border-top: 2px solid #6E675F;
+	}
+	</style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"><img src="./logo/logo_vegasun.png" /></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">		
+        <li><a href="#">Productos</a></li>
+		<li><a href="#">Nosotros</a></li>
+		<li><a href="#">Tienda</a></li>
+		<li><a href="#">Contacto</a></li>
+		<li><a href="#">Puntos de venta</a></li>
+		<li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+ <ul class="sidenav" id="mobile-demo"> 
+		<li><img src="./logo/Logo-con-pie.png" /></li>
+		
+        <li><a href="#">Productos</a></li>
+		<li><a href="#">Nosotros</a></li>
+		<li><a href="#">Tienda</a></li>
+		<li><a href="#">Contacto</a></li>
+		<li><a href="#">Puntos de venta</a></li>
+		<li><a href="#">CARRITO <i class="material-icons">shopping_cart</i></a></li>
+  </ul>
+<div class="container">
+
+<div class="row">
+	<h2>cooperativa</h2>
+	<h1>Vegasun</h1>
+	<h3>Obrador artesano 100% vegetal</h3>
+</div>
+
+<div class="row">
+	<h4>Le presentamos nuestros productos:</h4>
+	
+	<div class="col  s12 l4">
+		<div class="card">
+			<div class="card-image waves-effect waves-block waves-light">
+				<img class="activator criollo" src="./productos/criollo_granel.jpg">	 
+			</div>
+			<div class="card-content">
+				<a class="btn-floating halfway-fab waves-effect waves-light pulse"><i class="material-icons">add_shopping_cart</i></a>
+				<span class="card-title activator grey-text text-darken-4">Adobo Criollo<i class="material-icons right">more_vert</i></span>	  
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">Criollo<i class="material-icons right">close</i></span>
+				<p>Un toque picante para que el seitán tenga más gracia.</p>
+				<img class="activator" src="./productos/criollo_studio.jpg">
+			</div>
+		</div>
+	</div>
+	
+	<div class="col  s12 l4">
+		<div class="card">
+			<div class="card-image waves-effect waves-block waves-light">
+			  <img class="activator" src="./productos/morcillana_tarro.jpg">	 
+			</div>
+			<div class="card-content">
+				<a class="btn-floating halfway-fab waves-effect waves-light pulse"><i class="material-icons">add_shopping_cart</i></a>
+				<span class="card-title activator grey-text text-darken-4">Morcillana<i class="material-icons right">more_vert</i></span>	  
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">Morcillana<i class="material-icons right">close</i></span>
+				<p>La más codiciada. Gula es decir poco.</p>
+				<img class="activator" src="./productos/morcillana_studio.jpg">
+			</div>
+		</div>
+	</div>
+	
+	<div class="col s12 l4">
+		<div class="card">
+			<div class="card-image waves-effect waves-block waves-light">
+			  <img class="activator vegalomo" src="./productos/vegalomo_granel.jpg">	 
+			</div>
+			<div class="card-content">
+				<a class="btn-floating halfway-fab waves-effect waves-light pulse"><i class="material-icons">add_shopping_cart</i></a>
+				<span class="card-title activator grey-text text-darken-4">Vegalomo<i class="material-icons right">more_vert</i></span>	  
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">Vegalomo<i class="material-icons right">close</i></span>
+				<p>El clásico que no puede faltar en tu mesa.</p>
+				<img class="activator" src="./productos/vegalomo_studio.jpg">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col s12 l4">
+		<h5>Materias primas:</h5>
+		<p class="flow-text">Trabajamos de forma artesana eligiendo las mejores materias primas, con aceite de oliva, y especias de alta calidad para formular nuestras mezclas llenas de sabor.</p>
+	</div>
+	
+	<div class="col s12 l4">
+		<h5>Fácil de preparar:</h5>
+		<p class="flow-text">El formato en filetes del Vegalomo y Criollo resulta versátil y sencillo de utilizar. La Morcillana en formato untable solo hay que calentarla para disfrutarla al máximo.</p>
+	</div>
+	<div class="col s12 l4">
+		<h5>¿Elegir vegano?</h5>
+		<p class="flow-text">Nunca es tarde para cambiar hábitos que reduzcan el impacto dañino sobre los animales, hacer más sostenible y vida en la tierra y mejorar tu salud.</p>
+	</div>
+	
+	
+</div>
+</div>	
+	<script src="store.everything.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	
+<script>
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+
+
+</script>
+</body>
+</html>
