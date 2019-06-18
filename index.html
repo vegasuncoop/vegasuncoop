@@ -55,6 +55,9 @@
 		    text-shadow: 1px 1px 2px #000;
 		text-align:center;
 	}
+	h4,h5,h6{
+		color:#6E675F;
+	}
 	.container{min-height: 100vh;}
 	img{
 		width: 100%;
@@ -77,6 +80,9 @@
 
 	nav a, nav ul a { 
 		color: #333;   
+	}
+	nav i.material-icons {
+		display: inline-block;
 	}
 	.btn-floating {
 	    width: 50px;
@@ -104,6 +110,23 @@
 		border-radius: 0 0 2px 2px;	
 		border-top: 2px solid #6E675F;
 	}
+	span.badge.new {
+		font-weight: 300;
+		font-size: 0.8rem;
+		color: #fff;
+		vertical-align: super;
+		background-color: #fcac04;
+		border-radius: 2px;
+	}
+	#carrito i{
+		color: #7bae16;
+	}
+	@media only screen and (min-width: 601px){
+		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+			height: 56px;
+			line-height: 50px;
+		}
+	}
 	</style>
 </head>
 <body>
@@ -118,7 +141,7 @@
 		<li><a href="#nosotros">Nosotros</a></li>
 		<li><a href="#">Contacto</a></li>
 		<li><a href="#">Puntos de venta</a></li>
-		<li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
+		<li><a id="carrito" href="#"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
         
       </ul>
     </div>
@@ -131,7 +154,7 @@
 		<li><a href="#nosotros">Nosotros</a></li>
 		<li><a href="#">Contacto</a></li>
 		<li><a href="#">Puntos de venta</a></li>
-		<li><a href="#">CARRITO <i class="material-icons">shopping_cart</i></a></li>
+		<li><a id="carrito" href="#"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
   </ul>
 <div id="productos" class="container">
 	<div class="row">
@@ -145,7 +168,7 @@
 		<h4>Le presentamos nuestros productos:</h4>
 		
 		<div class="col  s12 l4">
-			<div class="card">
+			<div class="card hoverable">
 				<div class="card-image waves-effect waves-block waves-light">
 					<img class="activator criollo" src="./productos/criollo_granel.jpg">	 
 				</div>
@@ -162,7 +185,7 @@
 		</div>
 	
 		<div class="col  s12 l4">
-			<div class="card">
+			<div class="card hoverable">
 				<div class="card-image waves-effect waves-block waves-light">
 				  <img class="activator" src="./productos/morcillana_tarro.jpg">	 
 				</div>
@@ -179,7 +202,7 @@
 		</div>
 	
 		<div class="col s12 l4">
-			<div class="card">
+			<div class="card hoverable">
 				<div class="card-image waves-effect waves-block waves-light">
 				  <img class="activator vegalomo" src="./productos/vegalomo_granel.jpg">	 
 				</div>
