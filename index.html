@@ -145,28 +145,32 @@
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><img src="./logo/logo_vegasun.png" /></a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="mobile_menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">		
         <li><a href="#productos">Productos</a></li>	
 		<li><a href="#tienda">Tienda</a></li>
 		<li><a href="#nosotros">Nosotros</a></li>
 		<li><a href="#contacto">Contacto</a></li>
 		<li><a href="#puntos_venta">Puntos de venta</a></li>
-		<li><a id="carrito" href="#"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
+		<li><a id="carrito" href="#" data-target="shopping_cart" class="right sidenav-trigger show-on-medium-and-up"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
         
       </ul>
     </div>
   </nav>
 </div>
 
- <ul class="sidenav" id="mobile-demo">
+ <ul class="sidenav" id="mobile_menu">
 		<li><img src="./logo/Logo-con-pie.png" /></li>
 		<li><a class="sidenav-close" href="#productos">Productos</a></li>	
 		<li><a class="sidenav-close" href="#tienda">Tienda</a></li>
 		<li><a class="sidenav-close" href="#nosotros">Nosotros</a></li>
 		<li><a class="sidenav-close" href="#contacto">Contacto</a></li>
 		<li><a class="sidenav-close"  href="#puntos_venta">Puntos de venta</a></li>
-		<li><a class="sidenav-close" id="carrito" href="#"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
+		<li><a class="sidenav-close sidenav-trigger" id="carrito" href="#" data-target="shopping_cart"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
+ </ul>
+ <ul class="sidenav" id="shopping_cart">
+	<li><img src="./logo/Logo-con-pie.png" /></li>
+		
   </ul>
 </header>
 <main>
@@ -317,8 +321,8 @@
 	
 <script>
 $(document).ready(function(){
-    $('.sidenav').sidenav();
-	
+    $('#mobile_menu').sidenav({ edge: 'left' });
+	$('#shopping_cart').sidenav({ edge: 'right' });
 	
 	$('a[href*="#"]')
 	// Remove links that don't actually link to anything
