@@ -149,6 +149,11 @@
 	    width: 200px;
 		margin: 0 auto;
 	}
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
 	@media only screen and (min-width: 601px){
 		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 			height: 56px;
@@ -188,8 +193,21 @@
  </ul>
  
  <ul class="sidenav" id="shopping_cart">
-	<li class="branding"><img src="./logo/Logo-con-pie.png" /></li>
-		
+<!--<li class="branding"><img src="./logo/Logo-con-pie.png" /></li>-->
+     <li class=""><h4 class="center-align">CARRITO:</h4></li>
+     
+        <span class="card-title grey-text text-darken-4" style="margin:10px;">Adobo Criollo<i class="material-icons right">delete</i></span>
+		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 25px; border-bottom: 1px solid grey;">
+            
+            <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
+                <button class="btn-floating"><i class="material-icons">add</i></button>                
+                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="1">
+                 <button class="btn-floating"><i class="material-icons">remove</i></button>
+                
+            </div>
+            <img class="criollo" src="./productos/criollo_granel.jpg"  style="width:200px;    display: flex;    flex-flow: row;">
+     </div>
+     
 </ul>
   
 </header>
@@ -278,9 +296,50 @@
 		<div class="col s12">
 		<h4>Nuestra tienda:</h4>
 		
+            
+            
+            
+        
+            
+            
+            
 		
 		</div>
 	</div>
+    <div class="row">
+         <div class="col s12 m6 l4 xl3">
+                <div class="card hoverable">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator criollo" src="./productos/criollo_filetes.jpg">	 
+                    </div>
+                    <div class="card-content">                       
+                        <span class="card-title activator grey-text text-darken-4">Adobo Criollo 180g.</span>	 
+                        <a class="waves-effect waves-light btn center"><i class="material-icons right">add_shopping_cart</i>añadir</a>
+                    </div>
+              
+                </div>
+        </div>
+        
+         <div class="col s12 m6 l4 xl3">
+                <div class="card hoverable">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator criollo" src="./productos/criollo_granel.jpg">	 
+                    </div>
+                    <div class="card-content">
+                        
+                        <span class="card-title grey-text text-darken-4">Adobo Criollo 1Kg.</span>	  
+                        <input type="number" min="0" max="1000" value="1">
+                        <a class="waves-effect waves-light btn center"><i class="material-icons right">add_shopping_cart</i>añadir</a>
+                        
+                        
+                        
+                    </div>
+                   
+                </div>
+            </div>
+    
+    
+    </div>
 </div>
 
 <div id="nosotros" class="container">
