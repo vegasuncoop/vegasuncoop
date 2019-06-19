@@ -79,6 +79,7 @@
 	
 	nav .brand-logo {  
 		width: 100px; 
+		margin-top: -6px;
 	}
 
 	nav a, nav ul a { 
@@ -120,6 +121,12 @@
 		vertical-align: super;
 		background-color: #fcac04;
 		border-radius: 2px;
+		min-width: 1.5rem;
+		padding: 0;
+		margin-left: 0;
+		margin-top: 3px;
+		text-align: center;
+		font-size: 1rem;
 	}
 	.page-footer {
 		padding-top: 20px;
@@ -130,6 +137,17 @@
 
 	#carrito i{
 		color: #7bae16;
+	}
+	#mobile_menu{
+		width: 200px;
+	}
+	#mobile_menu{
+		width: 200px;
+	}
+	#shopping_cart{width: 300px;}
+	.branding{
+	    width: 200px;
+		margin: 0 auto;
 	}
 	@media only screen and (min-width: 601px){
 		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
@@ -146,15 +164,15 @@
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><img src="./logo/logo_vegasun.png" /></a>
       <a href="#" data-target="mobile_menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	  <a id="carrito" href="#" data-target="shopping_cart" class="right sidenav-trigger show-on-medium-and-up"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="">4</span></a>
       <ul class="right hide-on-med-and-down">		
         <li><a href="#productos">Productos</a></li>	
 		<li><a href="#tienda">Tienda</a></li>
 		<li><a href="#nosotros">Nosotros</a></li>
 		<li><a href="#contacto">Contacto</a></li>
 		<li><a href="#puntos_venta">Puntos de venta</a></li>
-		<li><a id="carrito" href="#" data-target="shopping_cart" class="right sidenav-trigger show-on-medium-and-up"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
-        
       </ul>
+	  
     </div>
   </nav>
 </div>
@@ -166,12 +184,14 @@
 		<li><a class="sidenav-close" href="#nosotros">Nosotros</a></li>
 		<li><a class="sidenav-close" href="#contacto">Contacto</a></li>
 		<li><a class="sidenav-close"  href="#puntos_venta">Puntos de venta</a></li>
-		<li><a class="sidenav-close sidenav-trigger" id="carrito" href="#" data-target="shopping_cart"><i class="material-icons">shopping_cart</i><span class="new badge" data-badge-caption="prod.">4</span></a></li>
- </ul>
- <ul class="sidenav" id="shopping_cart">
-	<li><img src="./logo/Logo-con-pie.png" /></li>
 		
-  </ul>
+ </ul>
+ 
+ <ul class="sidenav" id="shopping_cart">
+	<li class="branding"><img src="./logo/Logo-con-pie.png" /></li>
+		
+</ul>
+  
 </header>
 <main>
 <div id="productos" class="container">
