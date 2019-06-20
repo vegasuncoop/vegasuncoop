@@ -144,15 +144,33 @@
 	#mobile_menu{
 		width: 200px;
 	}
-	#shopping_cart{width: 300px;}
+	#shopping_cart{min-width: 300px;width: 50%;}
 	.branding{
 	    width: 200px;
 		margin: 0 auto;
 	}
+    .btn{    background-color: #7bae16;}
+    .btn:hover, .btn:active, .btn:focus{    background-color: #fcac04;} 
+        
+    .btn-reset{
+        padding: 0;
+        text-align: center;
+        margin: 0;
+    }
+    .card .card-title {
+        font-size: 18px;
+        font-weight: 300;
+    }
+    .delete i{margin: 0 10px;}
+    #shopping_cart li{margin-bottom:10px;}
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { 
       -webkit-appearance: none; 
       margin: 0; 
+        }
+    .card-title h6{
+        margin: 0 10px;
+        line-height: 2.2;
     }
 	@media only screen and (min-width: 601px){
 		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
@@ -194,20 +212,70 @@
  
  <ul class="sidenav" id="shopping_cart">
 <!--<li class="branding"><img src="./logo/Logo-con-pie.png" /></li>-->
-     <li class=""><h4 class="center-align">CARRITO:</h4></li>
+     <li class=""><h4 class=""><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons left">shopping_cart</i> CARRITO:</h4></li>
+     <li class="">
+        <h6 style="margin:0 10px;    line-height: 2.2;">Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
+		<div class="card-image" style="display: inline-flex;flex-flow: row; width:100%;    max-height: 150px;     margin: 0 25px; border-bottom: 1px solid grey;">
+              <div style="width: 100%;    max-width: 150px; display: flex;    flex-flow: row;">
+                <img class="criollo" src="./productos/criollo_granel.jpg"  >
+           </div>
+            <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
+                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
+                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="1">                
+                 <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>                
+            </div>
+          
+        </div>
+     </li>
      
-        <span class="card-title grey-text text-darken-4" style="margin:10px;">Adobo Criollo<i class="material-icons right">delete</i></span>
-		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 25px; border-bottom: 1px solid grey;">
+     <li class="">
+        <h6 style="margin:0 10px;    line-height: 2.2;">Vegalomo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
+		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px; border-bottom: 1px solid grey;">
             
             <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
-                <button class="btn-floating"><i class="material-icons">add</i></button>                
-                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="1">
-                 <button class="btn-floating"><i class="material-icons">remove</i></button>
+                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
+                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="2">
+                
+                 <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>
                 
             </div>
-            <img class="criollo" src="./productos/criollo_granel.jpg"  style="width:200px;    display: flex;    flex-flow: row;">
-     </div>
+            <div style="width: 100%;    max-width: 200px; display: flex;    flex-flow: row;">
+                <img class="criollo" src="./productos/vegalomo_granel.jpg">
+            </div>
+            
+         </div>
+         <h5 style="margin:0 10px;    line-height: 2.2; text-align:center;">200,00 €uros</h5>
+     </li>
      
+      <li class="">
+        <h6 style="margin:0 10px;    line-height: 2.2;">Morcillana 180g. <a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
+		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px; border-bottom: 1px solid grey;">
+            
+            <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
+                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
+                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="2">
+                
+                 <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>
+                
+            </div>
+            <img class="criollo" src="./productos/morcillana_tarro.jpg"  style="width:200px;    display: flex;    flex-flow: row;">
+         </div>
+     </li>
+     
+      <li class="">
+        <h6 style="margin:0 10px;    line-height: 2.2;">Vegalomo 180g.<a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
+		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px; border-bottom: 1px solid grey;">
+            
+            <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
+                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
+                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="2">
+                
+                 <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>
+                
+            </div>
+            <img class="criollo" src="./productos/vegalomo_filetes.jpg"  style="width:200px;    display: flex;    flex-flow: row;">
+         </div>
+     </li>
 </ul>
   
 </header>
@@ -313,8 +381,9 @@
                         <img class="activator criollo" src="./productos/criollo_filetes.jpg">	 
                     </div>
                     <div class="card-content">                       
-                        <span class="card-title activator grey-text text-darken-4">Adobo Criollo 180g.</span>	 
-                        <a class="waves-effect waves-light btn center"><i class="material-icons right">add_shopping_cart</i>añadir</a>
+                        <span class="card-title activator grey-text text-darken-4">Adobo Criollo 180g.	 
+                        <a class="waves-effect waves-light btn right"><i class="material-icons right">add_shopping_cart</i>añadir</a>
+                            </span>
                     </div>
               
                 </div>
@@ -327,11 +396,8 @@
                     </div>
                     <div class="card-content">
                         
-                        <span class="card-title grey-text text-darken-4">Adobo Criollo 1Kg.</span>	  
-                        <input type="number" min="0" max="1000" value="1">
-                        <a class="waves-effect waves-light btn center"><i class="material-icons right">add_shopping_cart</i>añadir</a>
-                        
-                        
+                        <span class="card-title grey-text text-darken-4">Adobo Criollo 1Kg.</span>                       
+                        <a class="waves-effect waves-light btn right"><i class="material-icons right">add_shopping_cart</i>añadir</a>
                         
                     </div>
                    
