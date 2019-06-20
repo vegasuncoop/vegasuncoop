@@ -59,9 +59,9 @@
 		text-align:center;
 	}
 	h4,h5,h6{
-		color:#6E675F;
+		color:#90887f;
 	}
-	.container{min-height: 100vh;}
+	.container{min-height: 100vh;padding-top: 56px;}
 	img{
 		width: 100%;
 		display: block;
@@ -147,6 +147,7 @@
 	#carrito i{
 		color: #7bae16;
         color: #90887f;
+        color:#fff;
 	}
 	#mobile_menu{
 		width: 200px;
@@ -154,7 +155,7 @@
 	#mobile_menu{
 		width: 200px;
 	}
-	#shopping_cart{min-width: 300px;width: 50%;}
+	#shopping_cart{min-width: 300px;width: 300px;}
 	.branding{
 	    width: 200px;
 		margin: 0 auto;
@@ -190,7 +191,7 @@
     }
 	@media only screen and (min-width: 601px){
 		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-			height: 56px;
+			height: 50px;
 			line-height: 50px;
 		}
 	}
@@ -228,62 +229,64 @@
  
  <ul class="sidenav" id="shopping_cart">
 <!--<li class="branding"><img src="./logo/Logo-con-pie.png" /></li>-->
-     <li class=""><h4 class=""><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons left">shopping_cart</i> CARRITO:</h4></li>
-     <li class="">
+     <li style="border-bottom: 1px solid grey;"><h4 class="" style="padding-left: 20px; margin: 7px 0px;;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> CARRITO</h4></li>
+     <li id="criollo_1000" style="border-bottom: 1px solid grey;">
         <h6 style="margin:0 10px;    line-height: 2.2;">Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
-		<div class="card-image" style="display: inline-flex;flex-flow: row; width:100%;    max-height: 150px;     margin: 0 25px; border-bottom: 1px solid grey;">
-              <div style="width: 100%;    max-width: 150px; display: flex;    flex-flow: row;">
-                <img class="criollo" src="./productos/criollo_granel.jpg"  >
-           </div>
+		<div class="card-image" style="display: inline-flex;flex-flow: row; width:100%; max-height: 200px; margin: 0 25px;">
+           
             <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
-                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
+                <button class="btn waves-effect waves-light pulse"><i class="material-icons">add</i></button>                
                     <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="1">                
                  <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>                
-            </div>
-          
+            </div>     
+             <div style="width: 100%;    max-width: 200px; display: flex;    flex-flow: row;">
+                <img class="criollo" src="./productos/criollo_granel.jpg"  >
+           </div>
         </div>
+         <h5 style="margin:0 10px; line-height: 2.2; text-align:right;">200,00 €</h5>
      </li>
      
-     <li class="">
+     <li id="criollo_180" class="" style="border-bottom: 1px solid grey;">
         <h6 style="margin:0 10px;    line-height: 2.2;">Vegalomo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
-		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px; border-bottom: 1px solid grey;">
+		<div  class="card-image" style="display: inline-flex;flex-flow: row;height: 200px; margin: 0 25px; ">
+           
+                <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
+                    <button class="btn waves-effect waves-light pulse"><i class="material-icons">add</i></button>                
+                        <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="2">                
+                     <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>                
+                </div>
+            
+               <div style="width: 100%;    max-width: 200px; display: flex;    flex-flow: row;">
+                    <img class="criollo" src="./productos/vegalomo_granel.jpg">
+                </div>
+         </div>
+         <h5 style="margin:0 10px; line-height: 2.2; text-align:right;">200,00 €</h5>
+     </li>
+     
+      <li class="" style="border-bottom: 1px solid grey;">
+        <h6 style="margin:0 10px;    line-height: 2.2;">Morcillana 180g. <a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
+		<div id="morcillana_180" class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px;">
             
             <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
-                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
+                <button class="btn waves-effect waves-light pulse"><i class="material-icons">add</i></button>                
                     <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="2">
                 
                  <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>
                 
             </div>
             <div style="width: 100%;    max-width: 200px; display: flex;    flex-flow: row;">
-                <img class="criollo" src="./productos/vegalomo_granel.jpg">
+                <img class="criollo" src="./productos/morcillana_tarro.jpg">
             </div>
-            
          </div>
-         <h5 style="margin:0 10px;    line-height: 2.2; text-align:center;">200,00 €uros</h5>
+         <h5 style="margin:0 10px; line-height: 2.2; text-align:right;">200,00 €</h5>
      </li>
      
-      <li class="">
-        <h6 style="margin:0 10px;    line-height: 2.2;">Morcillana 180g. <a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
-		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px; border-bottom: 1px solid grey;">
-            
-            <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
-                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
-                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="2">
-                
-                 <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>
-                
-            </div>
-            <img class="criollo" src="./productos/morcillana_tarro.jpg"  style="width:200px;    display: flex;    flex-flow: row;">
-         </div>
-     </li>
-     
-      <li class="">
+      <li class="" style="border-bottom: 1px solid grey;">
         <h6 style="margin:0 10px;    line-height: 2.2;">Vegalomo 180g.<a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
-		<div class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px; border-bottom: 1px solid grey;">
+		<div id="vegalomo_180" class="card-image" style="display: inline-flex;flex-flow: row;height: 200px;     margin: 0 25px;">
             
             <div class="input-field col s12" style="width: 50px;    display: flex;    float: left;    flex-flow: column;    align-self: center;    vertical-align: middle;">
-                <button class="btn waves-effect waves-light"><i class="material-icons">add</i></button>                
+                <button class="btn waves-effect waves-light pulse"><i class="material-icons">add</i></button>                
                     <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="2">
                 
                  <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>
@@ -291,6 +294,7 @@
             </div>
             <img class="criollo" src="./productos/vegalomo_filetes.jpg"  style="width:200px;    display: flex;    flex-flow: row;">
          </div>
+          <h5 style="margin:0 10px; line-height: 2.2; text-align:right;">200,00 €</h5>
      </li>
 </ul>
   
@@ -389,7 +393,7 @@
                     </div>
                     <div class="card-content">                       
                         <span class="card-title grey-text text-darken-4">Adobo Criollo 180g.	 
-                            <a class="waves-effect waves-light btn right pulse">añadir <i class="material-icons right">add_shopping_cart</i></a>
+                            <a class="waves-effect waves-light btn right pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -404,7 +408,7 @@
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">Adobo Criollo 1Kg.                     
-                        <a class="waves-effect waves-light btn right pulse">añadir <i class="material-icons right">add_shopping_cart</i></a>
+                        <a class="waves-effect waves-light btn right pulse"><i class="material-icons right">add_shopping_cart</i></a>
                          </span>
                     </div>
                    
@@ -418,7 +422,7 @@
                     </div>
                     <div class="card-content">                       
                         <span class="card-title grey-text text-darken-4">Morcillana 180g.	 
-                            <a class="waves-effect waves-light btn right pulse">añadir <i class="material-icons right">add_shopping_cart</i></a>
+                            <a class="waves-effect waves-light btn right pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -433,7 +437,7 @@
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">Morcillana 380g.                     
-                            <a class="waves-effect waves-light btn right pulse">añadir <i class="material-icons right">add_shopping_cart</i></a>
+                            <a class="waves-effect waves-light btn right pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
                    
@@ -446,7 +450,7 @@
                     </div>
                     <div class="card-content">                       
                         <span class="card-title activator grey-text text-darken-4">Vegalomo 180g.	 
-                            <a class="waves-effect waves-light btn right pulse">añadir <i class="material-icons right">add_shopping_cart</i></a>
+                            <a class="waves-effect waves-light btn right pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -461,7 +465,7 @@
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">Vegalomo 1Kg.                     
-                            <a class="waves-effect waves-light btn right pulse">añadir <i class="material-icons right">add_shopping_cart</i></a>
+                            <a class="waves-effect waves-light btn right pulse"><i class="material-icons right">add_shopping_cart</i></a>
                          </span>
                     </div>
                    
