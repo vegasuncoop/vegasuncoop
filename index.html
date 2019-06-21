@@ -548,7 +548,7 @@ p.flow-text {
                     </div>
                     <div class="card-content">                       
                         <span class="card-title grey-text text-darken-4">Adobo Criollo 180g.	 
-                            <a class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="criollo_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -563,21 +563,21 @@ p.flow-text {
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">Adobo Criollo 1Kg.                     
-                        <a class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                        <a data-id="criollo_1000" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                          </span>
                     </div>
                    
                 </div>
             </div>
     
-                <div class="col s12 m6 l4 xl4">
+        <div class="col s12 m6 l4 xl4">
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="morcillana" src="./productos/morcillana_tarro.jpg">	 
                     </div>
                     <div class="card-content">                       
                         <span class="card-title grey-text text-darken-4">Morcillana 180g.	 
-                            <a class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="morcillana_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -592,7 +592,7 @@ p.flow-text {
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">Morcillana 380g.                     
-                            <a class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="morcillana_380" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
                    
@@ -605,7 +605,7 @@ p.flow-text {
                     </div>
                     <div class="card-content">                       
                         <span class="card-title activator grey-text text-darken-4">Vegalomo 180g.	 
-                            <a class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="vegalomo_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -620,7 +620,7 @@ p.flow-text {
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">Vegalomo 1Kg.                     
-                            <a class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="vegalomo_1000" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                          </span>
                     </div>
                    
@@ -764,9 +764,10 @@ $(document).ready(function(){
     $(".shop_in").on("click", function(){
         
         var item_count = parseInt( $("#item_count").html() ) || 0;
-        item_count = item_count + 1;
-        $("#item_count").html(item_count);
-        
+        //item_count = item_count + 1;
+        //$("#item_count").html(item_count);
+        var item_to_put_in_shopping_cart = $(this).attr("data-id");
+        console.log(item_to_put_in_shopping_cart);
         //$( ".inner" ).append( "<p>Test</p>" );
     });
 });
