@@ -235,14 +235,17 @@ li .card-image{
   }
         
 #shopping_cart li{border-bottom: 1px solid grey;}
-        
+#shopping_cart li h6{
+  margin:0 10px;line-height: 2.2;
+            
+ } 
 .product-ud-price{
     margin: 0;
     padding: 0px 10px;
     text-align: right;
     line-height: 14px;
     position: relative;
-    margin-top: -76px;
+    margin-top: -60px;
     z-index: 3333;
   }
         
@@ -319,11 +322,11 @@ p.flow-text {
                 <img class="criollo" src="./productos/criollo_granel.jpg"  >
            </div>
         </div>
-        <p class="product-ud-price">(La unidad sale a 13,75)</p>
+         <p class="product-ud-price">(La unidad sale a <b>13,75</b>€)</p>
         <div class="input-field col s12">
-        <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>                              
-        <input id="" class="center-align number" type="number" max="999" min="2" value="1">                
-        <button class="btn waves-effect waves-light pulse"><i class="material-icons">add</i></button>                 
+        <button class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button>                              
+        <input id="" class="center-align number" type="number" max="999" min="1" value="2">                
+        <button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button>                 
         </div> 
         <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;position: relative;display: inline-block;">27,50€</h5>
      </li>
@@ -335,11 +338,11 @@ p.flow-text {
                 <img class="criollo" src="./productos/vegalomo_granel.jpg"  >
            </div>
         </div>
-        <p class="product-ud-price">(La unidad sale a 13,75€)</p>
+        <p class="product-ud-price">(La unidad sale a <b>13,75</b>€)</p>
         <div class="input-field col s12">
-        <button class="btn waves-effect waves-light"><i class="material-icons">remove</i></button>                              
+        <button class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button>                              
         <input id="" class="center-align number" type="number" max="999" min="1" value="1">                
-        <button class="btn waves-effect waves-light pulse"><i class="material-icons">add</i></button>                 
+        <button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button>                 
         </div> 
         <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;position: relative;display: inline-block;">13,75€</h5>
      </li>
@@ -718,6 +721,39 @@ $(document).ready(function(){
     
     $('.parallax').parallax();
     
+    $(".add").on("click", function(){
+        var item_id = $(this).parent().parent().attr("id");     
+        
+        var str_unit_pre = $('#'+item_id+" .product-ud-price b").html();
+        var unit_pre = parseFloat( str_unit_pre.replace(',','.').replace(' ','') || 0 );
+      
+        var cant = parseFloat( $('#'+item_id+" input").val() ) || 0;        
+        cant = cant+1;
+        $('#'+item_id+" input").val(cant);
+        
+        var total_prod = currencyFormatES( cant * unit_pre );
+        $('#'+item_id+" h5").html(total_prod);
+    
+    });
+    
+    $(".remove").on("click", function(){        
+        var item_id = $(this).parent().parent().attr("id"); 
+        
+        var str_unit_pre = $('#'+item_id+" .product-ud-price b").html();
+        var unit_pre = parseFloat( str_unit_pre.replace(',','.').replace(' ','') || 0 );
+    
+        var cant = parseFloat( $('#'+item_id+" input").val() ) || 0;        
+        cant = cant-1;
+        if(cant<=0){
+            cant = 1;
+        }
+        $('#'+item_id+" input").val(cant);
+        
+        var total_prod = currencyFormatES( cant * unit_pre );
+        $('#'+item_id+" h5").html(total_prod);
+        
+    });
+    
 	/*
 	$('a[href*="#"]')
 	// Remove links that don't actually link to anything
@@ -758,8 +794,15 @@ $(document).ready(function(){
 	
 	
   });
-  
-  
+    
+function currencyFormatES(num) {
+  return (
+    num
+      .toFixed(2) // always two decimal digits
+      .replace('.', ',') // replace decimal point character with ,
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €'
+  ) // use . as a separator
+}
 </script>
 </body>
 </html>
