@@ -70,7 +70,11 @@
         height: 50px;
         line-height: 50px;
     }
-	.container{min-height: 100vh;padding-top: 56px;}
+    main {
+        display: flex;
+        flex-flow: column;
+    }
+	.container{min-height: 50vh;}
 	img{
 		width: 100%;
 		display: block;
@@ -148,11 +152,11 @@
 	}
 	.page-footer {
 		padding-top: 20px;
-		color:#6E675F;
-		background-color: #EDEBD7;
+		
+		background-color: #90887f;
 		display: flex;
 	}
-
+    .page-footer h6{color:#fff}
 	#carrito i{
 		color: #7bae16;
         color: #90887f;
@@ -169,6 +173,20 @@
 	    width: 200px;
 		margin: 0 auto;
 	}
+    #nosotros{
+            background-color: #EDEBD7;
+    }
+        
+    #tienda{
+      background-color: #fcac04;
+    }
+    #tienda h4,#tienda p{color:#fff;} 
+        
+    #contacto{
+      background-color: #7bae16;
+    }
+    #contacto h4,#tienda p{color:#fff;} 
+
     .btn{    background-color: #7bae16;}
     .btn:hover, .btn:active, .btn:focus{    background-color: #fcac04;} 
         
@@ -194,12 +212,20 @@
         margin: 0 10px;
         line-height: 2.2;
     }
+        .tab-content{min-height:200px;}
    li p{
      margin: 0;
     padding: 0px 10px;
     text-align: right;
     line-height: 14px;
   }
+p.flow-text {
+    line-height: 1;
+    text-align: left;
+}
+.collapsible-body {
+    padding: 1rem;
+}
     .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
         font-size: 14px;
         outline: 0;
@@ -233,18 +259,19 @@
 </div>
 
  <ul class="sidenav" id="mobile_menu">
-		<li><img src="./logo/Logo-con-pie.png" /></li>
+		<li style="border-bottom: 1px solid grey;"><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons left">menu</i> Menú</h4></li>
 		<li><a class="sidenav-close" href="#productos">Productos</a></li>	
 		<li><a class="sidenav-close" href="#tienda">Tienda</a></li>
 		<li><a class="sidenav-close" href="#nosotros">Nosotros</a></li>
 		<li><a class="sidenav-close" href="#contacto">Contacto</a></li>
 		<li><a class="sidenav-close"  href="#puntos_venta">Puntos de venta</a></li>
+        <li style="position: absolute;bottom: 60px;"><img src="./logo/Logo-con-pie.png" /></li>
 		
  </ul>
  
  <ul class="sidenav" id="shopping_cart">
 <!--<li class="branding"><img src="./logo/Logo-con-pie.png" /></li>-->
-     <li style="border-bottom: 1px solid grey;"><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> CARRITO</h4></li>
+     <li style="border-bottom: 1px solid grey;"><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> Carrito</h4></li>
      <li id="criollo_1000" style="border-bottom: 1px solid grey;">
         <h6 style="margin:0 10px;    line-height: 2.2;">Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right"><i class="material-icons right">close</i></a></h6>
 		<div class="card-image" style="display: inline-flex;flex-flow: row; width:100%;    height: 300px;">
@@ -257,11 +284,11 @@
            <div class="input-field col s12" style="display: inline; height: 50px; width: 50%;padding-left: 10px;">
                 <button class="btn waves-effect waves-light" style=" width: 36px; font-size: 14px; outline: 0; padding: 0!important; text-align: center;"><i class="material-icons">remove</i></button>  
                               
-                    <input class="center-align" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="1" style="width:50px;">                
+                    <input class="center-align" type="number" max="999" min="1" pattern="-?[0-9]*(\.[0-9]+)?" id="" value="1" style="width:40px;">                
                  <button class="btn waves-effect waves-light pulse" style=" width: 36px; font-size: 14px; outline: 0; padding: 0!important; text-align: center;"><i class="material-icons">add</i></button>  
                
             </div> 
-         <h5 style="vertical-align: middle;text-align: right;width: 160px;padding-right: 10px;position: relative;display: inline-block;">200,00 €</h5>
+         <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;position: relative;display: inline-block;">20000,00€</h5>
      </li>
      
      <li id="criollo_180" class="" style="border-bottom: 1px solid grey;">
@@ -322,7 +349,7 @@
   
 </header>
 <main>
-<div id="productos" class="container">
+<div id="productos" class="container scrollspy">
 	<div class="row">
 		<h2>cooperativa</h2>
 		<h1>Vegasun</h1>
@@ -332,55 +359,156 @@
 
 	<div class="row">
 		<h4>Le presentamos nuestros productos:</h4>
-		
-		<div class="col  s12 l4">
+        
+	    <div class="col s12 m4">
 			<div class="card hoverable">
-				<div class="card-image waves-effect waves-block waves-light">
-					<img class="activator criollo" src="./productos/criollo_granel.jpg">	 
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Adobo Criollo<i class="material-icons right">more_vert</i></span>                  
+                    </div>
+                
+				<div class="card-image activator waves-effect waves-block waves-light">
+					<img class="vegalomo activator" src="./productos/criollo_granel.jpg">	 
 				</div>
-				<div class="card-content">
-					<a class="btn-floating halfway-fab waves-effect waves-light pulse"><i class="material-icons">add_shopping_cart</i></a>
-					<span class="card-title activator grey-text text-darken-4">Adobo Criollo<i class="material-icons right">more_vert</i></span>	  
+				<div class="card-content" style="padding:0;border:0">		
+					
+                     <ul class="collapsible">
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">local_florist</i>Ingredientes</div>
+                          <div class="collapsible-body">
+                             <p class="flow-text">Gluten de trigo, pan rallado, aceite de oliva, caldo de verduras, vinagre de vino, ajo fresco, sal, especias.</p>                           
+                           </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">child_care</i>Alérgenos</div>
+                          <div class="collapsible-body">
+                              <p class="flow-text">Contiene trigo y sulfitos. Puede contener trazas de sésamo, mostaza, soja y frutos secos.</p>                             
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">ac_unit</i>Caducidad y conservación</div>
+                            <div class="collapsible-body">
+                                <p class="flow-text">21 días en refrigeración desde su elaboración, 1 año congelado.</p>
+                                <p class="flow-text">Conservar en refrigeración (0-4 ºC), una vez abierto consumir en 2 días o congelar hasta su uso.</p>
+                            </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">local_dining</i>Información nutricional (por cada 100g)</div>
+                            <div class="collapsible-body">
+                                <p class="flow-text">Valor energético 347Kcal;<br />Grasas: 8,97g (saturadas 3,22g);<br />Hidratos de carbono: 13,09g (azúcares: 0,57g);<br />Fibra: 0,83g;<br />Proteínas 55,4g;<br />Sal: 1,1g.</p>
+                               
+                            </div>
+                        </li>
+                      </ul>
 				</div>
-				<div class="card-reveal">
-					<span class="card-title grey-text text-darken-4">Criollo<i class="material-icons right">close</i></span>
-					<p>Un toque picante para que el seitán tenga más gracia.</p>
-					<img class="activator" src="./productos/criollo_studio.jpg">
+  
+                <div class="card-reveal">
+					<span class="card-title grey-text text-darken-4">Adobo criollo<i class="material-icons right">close</i></span>                      
+					<p class="flow-text">Se preparan vuelta y vuelta en una sartén y ¡a disfrutar!</p>                    
+                     <img class="activator" src="./productos/criollo_studio.jpg">                    
+                    <p class="flow-text">Los filetes de Adobo Criollo están elaborados a base de seitán adobado con aceite de oliva, el punto justo de vinagre y una combinación propia de especias para conseguir un sabor riquísimo.<br /><br />Ya puedes prepararte un plato delicioso con productos de fabricación artesanal listos para comer en poco tiempo, además los filetes son un formato muy versátil para elaborar gran variedad de platos sabrosos.</p>					
 				</div>
+                
+                
 			</div>
 		</div>
-	
-		<div class="col  s12 l4">
+        
+        <div class="col s12 m4">
 			<div class="card hoverable">
-				<div class="card-image waves-effect waves-block waves-light">
-				  <img class="activator" src="./productos/morcillana_tarro.jpg">	 
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Morcillana<i class="material-icons right">more_vert</i></span>                  
+                    </div>
+                
+				<div class="card-image activator waves-effect waves-block waves-light">
+					<img class="vegalomo activator" src="./productos/morcillana_tarro.jpg">	 
 				</div>
-				<div class="card-content">
-					<a class="btn-floating halfway-fab waves-effect waves-light pulse"><i class="material-icons">add_shopping_cart</i></a>
-					<span class="card-title activator grey-text text-darken-4">Morcillana<i class="material-icons right">more_vert</i></span>	  
+				<div class="card-content" style="padding:0;border:0">		
+					
+                     <ul class="collapsible">
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">local_florist</i>Ingredientes</div>
+                          <div class="collapsible-body">
+                             <p class="flow-text">Arroz negro*, cebolla fresca*, cebolleta fresca*, aceite de oliva , sal, especias.<br /><br />*Procedente de cultivo ecológico.</p>                           
+                           </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">child_care</i>Alérgenos</div>
+                          <div class="collapsible-body">
+                              <p class="flow-text">Contiene frutos secos. Puede contener trazas de sésamo, soja, mostaza, trigo y sulfitos.</p>                             
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">ac_unit</i>Caducidad y conservación</div>
+                            <div class="collapsible-body">
+                                <p class="flow-text">9 meses sin refrigeración.</p>
+                                <p class="flow-text">Conservar en un lugar fresco y seco. Una vez abierto refrigerar y consumir en 2 días.</p>
+                            </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">local_dining</i>Información nutricional (por cada 100g)</div>
+                            <div class="collapsible-body">
+                                <p class="flow-text">Valor energético 159kcal;<br />Grasas: 2,4g (saturadas 0,15);<br />Hidratos de carbono: 15,3g (azúcares 2,7g);<br />Fibra 1,15g;<br />Proteínas 2,4g;<br />Sal 1,1g.</p>                   
+                            </div>
+                        </li>
+                      </ul>
 				</div>
-				<div class="card-reveal">
-					<span class="card-title grey-text text-darken-4">Morcillana<i class="material-icons right">close</i></span>
-					<p>La más codiciada. Gula es decir poco.</p>
-					<img class="activator" src="./productos/morcillana_studio.jpg">
+  
+                <div class="card-reveal">
+					<span class="card-title grey-text text-darken-4">Morcillana<i class="material-icons right">close</i></span>                                       
+					<p class="flow-text">Si te gustaban sabores tradicionales pero dejaste de comerlos cuando te hiciste vegan o redujiste tu consumo de productos de origen animal ahora puedes volver a disfrutarlos.</p>                    
+                     <img class="activator" src="./productos/vegalomo_studio.jpg">                    
+                    <p class="flow-text">La Morcillana tiene un sabor y aroma exquisito conseguido gracias a una combinación propia de especias y una cuidada selección de materias primas 99% de origen ecológico.<br /><br />Se presenta en formato untable en tarro de vidrio de 380 gramos.<br /><br />Para su máximo disfrute consúmela caliente</p>					
 				</div>
+                
+                
 			</div>
 		</div>
-	
-		<div class="col s12 l4">
+        
+   		<div class="col s12 m4">
 			<div class="card hoverable">
-				<div class="card-image waves-effect waves-block waves-light">
-				  <img class="activator vegalomo" src="./productos/vegalomo_granel.jpg">	 
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Vegalomo<i class="material-icons right">more_vert</i></span>                  
+                    </div>
+                
+				<div class="card-image activator waves-effect waves-block waves-light">
+					<img class="vegalomo activator" src="./productos/vegalomo_granel.jpg">	 
 				</div>
-				<div class="card-content">
-					<a class="btn-floating halfway-fab waves-effect waves-light pulse"><i class="material-icons">add_shopping_cart</i></a>
-					<span class="card-title activator grey-text text-darken-4">Vegalomo<i class="material-icons right">more_vert</i></span>	  
+				<div class="card-content" style="padding:0;border:0">		
+					
+                     <ul class="collapsible">
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">local_florist</i>Ingredientes</div>
+                          <div class="collapsible-body">
+                             <p class="flow-text">Gluten de trigo, pan rallado, aceite de oliva, caldo de verduras, limón exprimido, ajo fresco, sal, especias.</p>                           
+                           </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">child_care</i>Alérgenos</div>
+                          <div class="collapsible-body">
+                              <p class="flow-text">Contiene trigo y sulfitos. Puede contener trazas de sésamo, mostaza, soja y frutos secos.</p>                             
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">ac_unit</i>Caducidad y conservación</div>
+                            <div class="collapsible-body">
+                                <p class="flow-text">21 días en refrigeración desde su elaboración, 1 año congelado.</p>
+                                <p class="flow-text">Conservar en refrigeración (0-4 ºC), una vez abierto consumir en 2 días o congelar hasta su uso.</p>
+                            </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">local_dining</i>Información nutricional (por cada 100g)</div>
+                            <div class="collapsible-body">
+                                <p class="flow-text">Valor energético 351,5Kcal;<br />Grasas: 9,39g (saturadas 3,29g);<br />Hidratos de carbono: 13,1g (azúcares: 0,57g);<br />fibra: 0,83g;<br />Proteínas 55g;<br />Sal: 1,1g.</p>
+              
+                            </div>
+                        </li>
+                      </ul>
 				</div>
-				<div class="card-reveal">
+  
+                <div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Vegalomo<i class="material-icons right">close</i></span>
-					<p>El clásico que no puede faltar en tu mesa.</p>
-					<img class="activator" src="./productos/vegalomo_studio.jpg">
+					<p class="flow-text">Aunque no tengas tiempo de cocinar ¡Disfruta comiendo!</p>                    
+                     <img class="activator" src="./productos/vegalomo_studio.jpg">                    
+                    <p class="flow-text">Los filetes de Vegalomo están elaborados a base de seitán y adobados con aceite de oliva y una combinación exclusiva de especias.<br /><br />Prepárate cuando quieras un plato riquísimo con productos de fabricación artesanal y una inversión mínima de tiempo.<br /><br />Los filetes son un formato muy versátil que podrás utilizar en cualquiera de tus platos más allá del bocata de Vegalomo que puede tener infinitas y maravillosas variaciones.<br /><br />Se preparan vuelta y vuelta una sartén y ¡a disfrutar!</p>					
 				</div>
+                
+                
 			</div>
 		</div>
 	</div>
@@ -401,10 +529,13 @@
 	</div>
 </div>	
 
-<div id="tienda" class="container">
+<section id="tienda" class="scrollspy">
+<div class="container">    
+
 	<div class="row">
 		<div class="col s12">
 		  <h4>Nuestra tienda:</h4>
+          <p class="flow-text">Para que nuestros productos refrigerados te lleguen con la mayor caducidad trabajamos bajo pedido. </p>
 		</div>
 	</div>
     <div class="row">
@@ -496,49 +627,72 @@
     
     </div>
 </div>
+</section>
+    
+<section id="nosotros" class="scrollspy">
+<div class="container">
+           
+    <div class="row">
+    <div class="col s12">        
+        <h4>Acerca de nosotros:</h4>
+        
+          <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#cooperativa">La cooperativa</a></li>
+            <li class="tab col s3"><a href="#veganismo">El veganismo</a></li>
 
-<div id="nosotros" class="container">
-	<div class="row">
-		<div class="col s12">
-			<h4>Acerca de nosotros:</h4>
-			
-			<h5>La cooperativa:</h5>
-			
-			<p class="flow-text">Hoy en día el número de personas que deciden basar su dieta en vegetales es cada vez mayor, los motivos son varios: respeto hacia los animales, salud, motivos ambientales, entre ellos. A pesar de que el veganismo no es sólo una dieta esta faceta posiblemente sea la más visible ya que existe una gran demanda opciones veganas en comercios de todo tipo, desde tiendas minoristas, establecimientos hosteleros, hasta eventos como ferias, festivales y fiestas de barrio, son cada vez más personas las que excluyen de su dieta cualquier tipo de carne y derivado de origen animal como huevos o lácteos buscando opciones elaboradas más allá de la idea de una ensalada y es que la realidad es que la comida vegana puede ser muy variada, con multitud de sabores y texturas para disfrutarla.</p>
-			<p class="flow-text">Desde la cooperativa trabajamos por facilitar el acceso a alternativas veganas con productos como el Vegalomo o la Morcillana que cuentan con  una muy buena acogida. Además los productos que fabricamos están pensados para que tanto la forma de preparación como su aplicación en diferentes platos sea  muy sencilla e intuitiva</p>
-			<p class="flow-text">Trabajamos principalmente con tiendas y establecimientos hosteleros que quieran contar con nuestros productos en sus distintos formatos: pequeño formato y a granel.  También ofrecemos servicio a particulares que quieran realizar pedidos con envío o recogidas en el obrador.</p>
-			
-			<h5>El veganismo:</h5>
-			<p class="flow-text">Entendemos el veganismo como una actitud de respeto hacia todos los animales quienes tienen intereses propios como el de disfrutar de su vida y ser libres, son capaces de sentir placer o huir del sufrimiento. Nuestra supervivencia no está enfrentada con el respeto a la vida e intereses de los demás animales y podemos llevar una vida completa desde el punto de vista nutricional y sana consumiendo exclusivamente alimentos de origen vegetal.</p>
-		</div>
-	</div>
+          </ul>
+        
+   
+            <div id="cooperativa" class="col s12 tab-content">
+
+                <h5>La cooperativa:</h5>
+
+                <p class="flow-text">Hoy en día el número de personas que deciden basar su dieta en vegetales es cada vez mayor, los motivos son varios: respeto hacia los animales, salud, motivos ambientales, entre ellos. A pesar de que el veganismo no es sólo una dieta esta faceta posiblemente sea la más visible ya que existe una gran demanda opciones veganas en comercios de todo tipo, desde tiendas minoristas, establecimientos hosteleros, hasta eventos como ferias, festivales y fiestas de barrio, son cada vez más personas las que excluyen de su dieta cualquier tipo de carne y derivado de origen animal como huevos o lácteos buscando opciones elaboradas más allá de la idea de una ensalada y es que la realidad es que la comida vegana puede ser muy variada, con multitud de sabores y texturas para disfrutarla.</p>
+                <p class="flow-text">Desde la cooperativa trabajamos por facilitar el acceso a alternativas veganas con productos como el Vegalomo o la Morcillana que cuentan con  una muy buena acogida. Además los productos que fabricamos están pensados para que tanto la forma de preparación como su aplicación en diferentes platos sea  muy sencilla e intuitiva</p>
+                <p class="flow-text">Trabajamos principalmente con tiendas y establecimientos hosteleros que quieran contar con nuestros productos en sus distintos formatos: pequeño formato y a granel.  También ofrecemos servicio a particulares que quieran realizar pedidos con envío o recogidas en el obrador.</p>
+            </div>
+            <div id="veganismo" class="col s12 tab-content">
+                <h5>El veganismo:</h5>
+                <p class="flow-text">Entendemos el veganismo como una actitud de respeto hacia todos los animales quienes tienen intereses propios como el de disfrutar de su vida y ser libres, son capaces de sentir placer o huir del sufrimiento. Nuestra supervivencia no está enfrentada con el respeto a la vida e intereses de los demás animales y podemos llevar una vida completa desde el punto de vista nutricional y sana consumiendo exclusivamente alimentos de origen vegetal.</p>
+
+             </div>
+        </div>
+    </div>
+
 </div>
+</section>
+    
+<section id="contacto" class="scrollspy">
+    <div class="container"> 
+        <div class="row">
+            <div class="col s12">
+            <h4>Cómo contactarnos:</h4>
 
-<div id="contacto" class="container">
-	<div class="row">
-		<div class="col s12">
-		<h4>Cómo contactarnos:</h4>
-		
-		
-		</div>
-	</div>
-</div>
 
-<div id="puntos_venta" class="container">
-	<div class="row">
-		<div class="col s12">
-		<h4>Puntos de Venta:</h4>
-		
-		
-		</div>
-	</div>
-</div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section id="puntos_venta" class="scrollspy">
+    <div class="container"> 
 
+        <div class="row">
+            <div class="col s12">
+            <h4>Puntos de Venta:</h4>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+    
 </main>
+    
  <footer class="page-footer">
 	<div class="row">
 		<div class="col s12">
-		<h6>Cooperativa Vegasun 2019</h6>
+		<h6>&copy; Cooperativa Vegasun 2019</h6>
 		
 		
 		</div>
@@ -555,9 +709,17 @@
 	
 <script>
 $(document).ready(function(){
+
     $('#mobile_menu').sidenav({ edge: 'left' });
 	$('#shopping_cart').sidenav({ edge: 'right' });
-	
+    
+    $('.collapsible').collapsible();
+    $('.tabs').tabs();
+    $('.scrollspy').scrollSpy();
+    
+    $('.parallax').parallax();
+    
+	/*
 	$('a[href*="#"]')
 	// Remove links that don't actually link to anything
 	.not('[href="#"]')
@@ -593,7 +755,7 @@ $(document).ready(function(){
 		}
     }
 });
-	
+	*/
 	
 	
   });
