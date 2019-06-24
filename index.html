@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css" />
 	
+    <script src="store.everything.min.js"></script>
+     
 	<style>
 	body{
         padding:0;margin:0;border:0;
@@ -123,7 +125,7 @@
 		background-color: #fcac04;
 	}
 	.card .card-content {
-		padding: 14px;
+		padding: 10px;
 		border-radius: 0 0 2px 2px;	
 		border-top: 2px solid #6E675F;
         line-height: 26px;
@@ -132,6 +134,13 @@
         display: block;
         line-height: 32px;
         margin-bottom: 0;
+    }
+    .card-title b{      
+        font-size: 2rem;
+        vertical-align: middle;  
+        padding: 0;
+        color: #90887f;
+        font-family: 'Montserrat', sans-serif;
     }
     .card .card-content .card-title i {
             line-height: 38px;
@@ -197,7 +206,7 @@
     }
     .card .card-title {
         font-size: 16px;
-        font-weight: 300;
+        font-weight: 600;
            
     }
     .card-title a.btn, .card-title a.btn i{margin:0;    padding: 0 4px;line-height: 38px;}
@@ -256,7 +265,12 @@ li .card-image{
      position: relative;
      display: inline-block;
 }
-        
+.card-content-title{   
+    padding: 0;
+    padding-top: 10px;
+    border: 0;
+    text-align: center;
+}
 .input-field{display: inline; height: 50px; width: 50%;padding-left: 10px;}
 .input-field button{width: 36px; font-size: 14px; outline: 0; padding: 0!important; text-align: center;}
 input.number{width: 40px!important;}
@@ -272,15 +286,281 @@ p.flow-text {
         font-size: 14px;
         outline: 0;
     }
-	@media only screen and (min-width: 601px){
+        
+@media only screen and (min-width: 601px){
 		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 			height: 50px;
 			line-height: 50px;
 		}
-	}
+}
+        
+.preloader-background {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    flex-flow: column;
+	background-color: #fcac04;
+	min-height:100vh;
+	position: fixed;
+	z-index:3000;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+    overflow: hidden;
+}
+        
+.preloader-background h1 {
+  position: relative;
+  margin: 0 auto;
+  top: 25vh;
+  width: 100vw;
+  text-align: center;
+  font-size: 6vh;
+  color: #90887f;
+  opacity: 1;
+  font-family: fantasy;
+  animation: pulse 2.5s linear infinite;
+}
+
+#cooking {
+  position: relative;
+  margin: 0 auto;
+  top: 0;
+  width: 75vh;
+  height: 75vh;
+  overflow: hidden;
+}
+#cooking .bubble {
+  position: absolute;
+  border-radius: 100%;
+  box-shadow: 0 0 0.25vh #4d4d4d;
+  opacity: 0;
+}
+#cooking .bubble:nth-child(1) {
+  margin-top: 2.5vh;
+  left: 58%;
+  width: 2.5vh;
+  height: 2.5vh;
+  background-color: #454545;
+  animation: bubble 2s cubic-bezier(0.53, 0.16, 0.39, 0.96) infinite;
+}
+#cooking .bubble:nth-child(2) {
+  margin-top: 3vh;
+  left: 52%;
+  width: 2vh;
+  height: 2vh;
+  background-color: #3d3d3d;
+  animation: bubble 2s ease-in-out .35s infinite;
+}
+#cooking .bubble:nth-child(3) {
+  margin-top: 1.8vh;
+  left: 50%;
+  width: 1.5vh;
+  height: 1.5vh;
+  background-color: #333;
+  animation: bubble 1.5s cubic-bezier(0.53, 0.16, 0.39, 0.96) 0.55s infinite;
+}
+#cooking .bubble:nth-child(4) {
+  margin-top: 2.7vh;
+  left: 56%;
+  width: 1.2vh;
+  height: 1.2vh;
+  background-color: #2b2b2b;
+  animation: bubble 1.8s cubic-bezier(0.53, 0.16, 0.39, 0.96) 0.9s infinite;
+}
+#cooking .bubble:nth-child(5) {
+  margin-top: 2.7vh;
+  left: 63%;
+  width: 1.1vh;
+  height: 1.1vh;
+  background-color: #242424;
+  animation: bubble 1.6s ease-in-out 1s infinite;
+}
+#cooking #area {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  background-color: transparent;
+  transform-origin: 15% 60%;
+  animation: flip 2.1s ease-in-out infinite;
+}
+#cooking #area #sides {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: 15% 60%;
+  animation: switchSide 2.1s ease-in-out infinite;
+}
+#cooking #area #sides #handle {
+  position: absolute;
+  bottom: 18%;
+  right: 80%;
+  width: 35%;
+  height: 20%;
+  background-color: transparent;
+  border-top: 1vh solid #333;
+  border-left: 1vh solid transparent;
+  border-radius: 100%;
+  transform: rotate(20deg) rotateX(0deg) scale(1.3, 0.9);
+}
+#cooking #area #sides #pan {
+  position: absolute;
+  bottom: 20%;
+  right: 30%;
+  width: 50%;
+  height: 8%;
+  background-color: #333;
+  border-radius: 0 0 1.4em 1.4em;
+  transform-origin: -15% 0;
+}
+#cooking #area #pancake {
+  position: absolute;
+  top: 24%;
+  width: 100%;
+  height: 100%;
+  transform: rotateX(85deg);
+  animation: jump 2.1s ease-in-out infinite;
+}
+#cooking #area #pancake #pastry {
+  position: absolute;
+  bottom: 26%;
+  right: 37%;
+  width: 40%;
+  height: 25%;
+  background-color: #333;
+  box-shadow: 0 0 3px 0 #333;
+  border-radius: 100%;
+  transform-origin: -20% 0;
+  animation: fly 2.1s ease-in-out infinite;
+}
+
+@keyframes jump {
+  0% {
+    top: 24%;
+    transform: rotateX(85deg);
+  }
+  25% {
+    top: 10%;
+    transform: rotateX(0deg);
+  }
+  50% {
+    top: 30%;
+    transform: rotateX(85deg);
+  }
+  75% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(85deg);
+  }
+}
+@keyframes flip {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(-27deg);
+  }
+  30%,
+  50% {
+    transform: rotate(0deg);
+  }
+  55% {
+    transform: rotate(27deg);
+  }
+  83.3% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes switchSide {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+@keyframes fly {
+  0% {
+    bottom: 26%;
+    transform: rotate(0deg);
+  }
+  10% {
+    bottom: 40%;
+  }
+  50% {
+    bottom: 26%;
+    transform: rotate(-190deg);
+  }
+  80% {
+    bottom: 40%;
+  }
+  100% {
+    bottom: 26%;
+    transform: rotate(0deg);
+  }
+}
+@keyframes bubble {
+  0% {
+    transform: scale(0.15, 0.15);
+    top: 80%;
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.33, 0.33);
+    top: 60%;
+    opacity: 0;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+    opacity: .25;
+  }
+  50% {
+    transform: scale(1.2, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: .25;
+  }
+}
 	</style>
 </head>
 <body>
+<div class="preloader-background">
+    <h1>Vegalomos cocinándose...</h1>
+    <div id="cooking">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div id="area">
+        <div id="sides">
+          <div id="pan"></div>
+          <div id="handle"></div>
+        </div>
+        <div id="pancake">
+          <div id="pastry"></div>
+        </div>
+      </div>
+    </div>
+</div>
 <header>
  <div class="navbar-fixed">
   <nav>
@@ -291,7 +571,7 @@ p.flow-text {
       <ul class="right hide-on-med-and-down">		
         <li><a href="#productos">Productos</a></li>	
 		<li><a href="#tienda">Tienda</a></li>
-		<li><a href="#nosotros">Nosotros</a></li>
+		<li><a href="#nosotras">Nosotras</a></li>
 		<li><a href="#contacto">Contacto</a></li>
 		<li><a href="#puntos_venta">Puntos de venta</a></li>
       </ul>
@@ -304,7 +584,7 @@ p.flow-text {
 		<li style="border-bottom: 1px solid grey;"><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons left">menu</i> Menú</h4></li>
 		<li><a class="sidenav-close" href="#productos">Productos</a></li>	
 		<li><a class="sidenav-close" href="#tienda">Tienda</a></li>
-		<li><a class="sidenav-close" href="#nosotros">Nosotros</a></li>
+		<li><a class="sidenav-close" href="#nosotras">Nosotras</a></li>
 		<li><a class="sidenav-close" href="#contacto">Contacto</a></li>
 		<li><a class="sidenav-close"  href="#puntos_venta">Puntos de venta</a></li>
         <li style="position: absolute;bottom: 60px;"><img src="./logo/Logo-con-pie.png" /></li>
@@ -316,7 +596,7 @@ p.flow-text {
      <li style="border-bottom: 1px solid grey;"><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> Carrito</h4></li>
      
      <li id="criollo_1000" style="border-bottom: 1px solid grey;">
-        <h6 style="margin:0 10px;line-height: 2.2;">Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
+        <h6>Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
 		<div class="card-image">
              <div class="card-image-wrapper">
                 <img class="criollo" src="./productos/criollo_granel.jpg"  >
@@ -332,7 +612,7 @@ p.flow-text {
      </li>
      
      <li id="vegalomo_1000" style="border-bottom: 1px solid grey;">
-        <h6 style="margin:0 10px;line-height: 2.2;">Vegalomo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
+        <h6>Vegalomo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
 		<div class="card-image">
              <div class="card-image-wrapper">
                 <img class="criollo" src="./productos/vegalomo_granel.jpg"  >
@@ -454,8 +734,8 @@ p.flow-text {
   
                 <div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Morcillana<i class="material-icons right">close</i></span>                                       
-					<p class="flow-text">Si te gustaban sabores tradicionales pero dejaste de comerlos cuando te hiciste vegan o redujiste tu consumo de productos de origen animal ahora puedes volver a disfrutarlos.</p>                    
-                     <img class="activator" src="./productos/vegalomo_studio.jpg">                    
+					<p class="flow-text">Si te gustaban sabores tradicionales pero dejaste de comerlos cuando te hiciste vegano, o redujiste tu consumo de productos de origen animal ahora puedes volver a disfrutarlos.</p>                    
+                     <img class="activator" src="./productos/morcillana_studio.jpg">                    
                     <p class="flow-text">La Morcillana tiene un sabor y aroma exquisito conseguido gracias a una combinación propia de especias y una cuidada selección de materias primas 99% de origen ecológico.<br /><br />Se presenta en formato untable en tarro de vidrio de 380 gramos.<br /><br />Para su máximo disfrute consúmela caliente</p>					
 				</div>
                 
@@ -542,41 +822,53 @@ p.flow-text {
 	</div>
     <div class="row">
         <div class="col s12 m6 l4 xl4">
-                <div class="card hoverable">
+                <div id="card_criollo_180" class="card hoverable">
+                     <div class="card-content-title">
+                        <span class="card-title grey-text text-darken-4">Adobo Criollo 180g.</span>                  
+                    </div>
+                    
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="criollo" src="./productos/criollo_filetes.jpg">	 
                     </div>
-                    <div class="card-content">                       
-                        <span class="card-title grey-text text-darken-4">Adobo Criollo 180g.	 
+                     <div class="card-content">                        
+                         <span class="card-title grey-text text-darken-4 left-align">P.V.P.: <b>2,80€</b>
                             <a data-id="criollo_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
-              
                 </div>
         </div>
         
          <div class="col s12 m6 l4 xl4">
-                <div class="card hoverable">
+                <div id="card_criollo_1000" class="card hoverable">
+                    <div class="card-content-title">
+                        <span class="card-title grey-text text-darken-4">Adobo Criollo 1Kg.</span>                  
+                    </div>
+                    
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="criollo" src="./productos/criollo_granel.jpg">	 
                     </div>
                     <div class="card-content">
                         
-                        <span class="card-title grey-text text-darken-4">Adobo Criollo 1Kg.                     
-                        <a data-id="criollo_1000" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
-                         </span>
+                        <span class="card-title grey-text text-darken-4">P.V.P.: <b>13,75€</b>                   
+                            <a data-id="criollo_1000" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                        </span>
                     </div>
                    
                 </div>
             </div>
     
         <div class="col s12 m6 l4 xl4">
-                <div class="card hoverable">
+                <div id="card_morcillana_180" class="card hoverable">
+                    
+                    <div class="card-content-title">
+                        <span class="card-title grey-text text-darken-4">Morcillana 180g.</span>                  
+                    </div>
+                    
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="morcillana" src="./productos/morcillana_tarro.jpg">	 
                     </div>
                     <div class="card-content">                       
-                        <span class="card-title grey-text text-darken-4">Morcillana 180g.	 
+                        <span class="card-title grey-text text-darken-4">P.V.P.: <b>2,80€</b> 
                             <a data-id="morcillana_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
@@ -585,13 +877,17 @@ p.flow-text {
         </div>
         
          <div class="col s12 m6 l4 xl4">
-                <div class="card hoverable">
+                <div id="card_morcillana_380" class="card hoverable">
+                    <div class="card-content-title">
+                        <span class="card-title grey-text text-darken-4">Morcillana 380g.</span>                  
+                    </div>
+                    
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="morcillana" src="./productos/morcillana_tarro.jpg">	 
                     </div>
                     <div class="card-content">
                         
-                        <span class="card-title grey-text text-darken-4">Morcillana 380g.                     
+                        <span class="card-title grey-text text-darken-4">P.V.P.: <b>4,90€</b>                 
                             <a data-id="morcillana_380" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
@@ -599,12 +895,16 @@ p.flow-text {
                 </div>
             </div>
                 <div class="col s12 m6 l4 xl4">
-                <div class="card hoverable">
+                <div id="card_vegalomo_180" class="card hoverable">
+                    <div class="card-content-title">
+                        <span class="card-title grey-text text-darken-4">Vegalomo 180g.</span>                  
+                    </div>
+                    
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="vegalomo" src="./productos/vegalomo_filetes.jpg">	 
                     </div>
                     <div class="card-content">                       
-                        <span class="card-title activator grey-text text-darken-4">Vegalomo 180g.	 
+                        <span class="card-title activator grey-text text-darken-4">P.V.P.: <b>2,80€</b>
                             <a data-id="vegalomo_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
@@ -613,13 +913,17 @@ p.flow-text {
         </div>
         
          <div class="col s12 m6 l4 xl4">
-                <div class="card hoverable">
+                <div id="card_vegalomo_1000" class="card hoverable">
+                    <div class="card-content-title">
+                        <span class="card-title grey-text text-darken-4">Vegalomo 1Kg.</span>                  
+                    </div>
+                    
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="vegalomo" src="./productos/vegalomo_granel.jpg">	 
                     </div>
                     <div class="card-content">
                         
-                        <span class="card-title grey-text text-darken-4">Vegalomo 1Kg.                     
+                        <span class="card-title grey-text text-darken-4"> P.V.P.: <b>13,75€</b>                    
                             <a data-id="vegalomo_1000" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
                          </span>
                     </div>
@@ -631,12 +935,12 @@ p.flow-text {
 </div>
 </section>
     
-<section id="nosotros" class="scrollspy">
+<section id="nosotras" class="scrollspy">
 <div class="container">
            
     <div class="row">
     <div class="col s12">        
-        <h4>Acerca de nosotros:</h4>
+        <h4>Acerca de nosotras:</h4>
         
           <ul class="tabs">
             <li class="tab col s3"><a class="active" href="#cooperativa">La cooperativa</a></li>
@@ -709,7 +1013,8 @@ p.flow-text {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	
-<script>
+<script>    
+document.addEventListener("DOMContentLoaded", function(){ $('.preloader-background').delay(700).fadeOut('slow'); });
 $(document).ready(function(){
 
     $('#mobile_menu').sidenav({ edge: 'left' });
@@ -754,21 +1059,48 @@ $(document).ready(function(){
         
     });
 	
-    $(".shop_out").on("click", function(){
+    $(".shop_out").on("click", "#shopping_cart", function(){
         var item_id = $(this).parent().parent().attr("id");
         var item_count = parseInt( $("#item_count").html() ) || 0;
         item_count = item_count - 1;
         $("#item_count").html(item_count);
-        $("#"+item_id).remove();        
+        $("#"+item_id).remove();     
+        console.log("#"+item_id);
     });
-    $(".shop_in").on("click", function(){
-        
+    
+    //asociar evento click a los productos de carrito creados al pulsar shop_in
+    $("#shopping_cart").on("click", ".shop_out", function(){
+        var item_id = $(this).parent().parent().attr("id");
         var item_count = parseInt( $("#item_count").html() ) || 0;
-        //item_count = item_count + 1;
-        //$("#item_count").html(item_count);
+        item_count = item_count - 1;
+        $("#item_count").html(item_count);
+        $("#"+item_id).remove();     
+     });
+    
+    $(".shop_in").on("click", function(){        
+        var item_count = parseInt( $("#item_count").html() ) || 0;
+        
+        
         var item_to_put_in_shopping_cart = $(this).attr("data-id");
-        console.log(item_to_put_in_shopping_cart);
-        //$( ".inner" ).append( "<p>Test</p>" );
+       
+        
+        if( $("#in_"+item_to_put_in_shopping_cart).length == 0 ) {//it doesn't exist
+            //console.log("aún NO existe");
+            $("#shopping_cart").append( '<li id="in_'+item_to_put_in_shopping_cart+'"><h6><a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6></li>' );
+            item_count = item_count + 1;
+        }else{
+            //console.log("YA existe");
+            
+        }
+        
+        var card_span = $("#card_"+item_to_put_in_shopping_cart+" .card-content span").text();        
+        console.log(card_span);        
+        
+        $("#item_count").html(item_count);
+                
+        //$("#card_"+item_to_put_in_shopping_cart)
+        //console.log(item_to_put_in_shopping_cart);
+       
     });
 });
     
