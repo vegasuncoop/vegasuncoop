@@ -17,9 +17,10 @@
 	 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css" />
-	
-    <script src="store.everything.min.js"></script>
-     
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" />
+    
 	<style>
 	body{
         padding:0;margin:0;border:0;
@@ -68,6 +69,7 @@
 	h4,h5,h6{
 		color:#90887f;
 	}
+    select {display: block;}
     nav {
         color: #333;
         background-color: #fff;
@@ -108,6 +110,33 @@
 	nav i.material-icons {
 		display: inline-block;
 	}
+        
+table.dataTable tbody td {
+    padding: 8px 10px;
+    border: 1px solid #efefef;
+    text-align: center;
+}
+        
+ul.dtr-details {
+    display: inline-table;
+        border-top: 1px solid #efefef;
+}
+        
+table.dataTable>tbody>tr.child ul.dtr-details>li{
+    display: flex;
+    flex-flow: column;  
+    float: left;
+    min-width: 138px;            
+}   
+        
+table.dataTable>tbody>tr.child ul.dtr-details>li {
+    border: 1px solid #efefef;
+    padding: 0;
+}
+table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
+    border: 1px solid #efefef;
+}
+        
 	.btn-floating {
 	    width: 50px;
 		height: 50px;
@@ -1019,6 +1048,82 @@ p.flow-text {
 
             </div>
         </div>
+        
+        <div class="row">
+            <div class="col s12">
+                
+    <table id="example" class="" style="width:100%">
+        <thead>
+          <tr>
+              <th>Hecho</th>
+              <th>Enviado</th>
+              <th>Factura</th>
+              
+              <th>Bultos</th>
+              <th>Empresa transporte</th>
+              <th>Cliente</th>
+              
+              <th>Pago</th>
+              <th>Datos envío o entrega</th>
+              <th>Factura</th>
+              
+              <th>Observaciones</th>              
+              <th>Vegalomo 180g.</th>
+              <th>Criollo 180g.</th>
+              
+              <th>Morcillana 180g.</th>              
+              <th>Vegalomo 1Kg.</th>
+              <th>Criollo 1Kg.</th>
+              
+              <th>Morcillana 380g.</th>              
+              <th>Seitán 1Kg.</th>
+              <th>Hamburguesa Granel</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+              
+            <td>#</td> <td>#</td> <td>#</td>
+             <td>#</td> <td>#</td> <td>#</td>
+              <td>#</td> <td>#</td> <td>#</td>
+      <td>#</td> <td>#</td> <td>#</td>
+                    <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+                       
+            <td>#</td> <td>#</td> <td>#</td>
+             <td>#</td> <td>#</td> <td>#</td>
+              <td>#</td> <td>#</td> <td>#</td>
+      <td>#</td> <td>#</td> <td>#</td>
+                    <td>#</td> <td>#</td> <td>#</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+                 
+            <td>#</td> <td>#</td> <td>#</td>
+             <td>#</td> <td>#</td> <td>#</td>
+              <td>#</td> <td>#</td> <td>#</td>
+      <td>#</td> <td>#</td> <td>#</td>
+                    <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+        </tbody>
+      </table>
+                
+           </div>
+        </div>
+        
     </div>
 </section>
     
@@ -1041,12 +1146,25 @@ p.flow-text {
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
 	
-<script>    
-document.addEventListener("DOMContentLoaded", function(){ $('.preloader-background').delay(700).fadeOut('slow'); });
+<script>
 
+document.addEventListener("DOMContentLoaded", function(){ $('.preloader-background').delay(700).fadeOut('slow'); });
+    
+$.extend( $.fn.dataTable.defaults, {
+    responsive: true
+} );
+    
 $(document).ready(function(){
 
+    $('#example').DataTable({
+            //scrollY: 300,
+    } );
+    
     $('#mobile_menu').sidenav({ edge: 'left' });
 	$('#shopping_cart').sidenav({ edge: 'right' });
     
