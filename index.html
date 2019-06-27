@@ -69,7 +69,7 @@
 	h4,h5,h6{
 		color:#90887f;
 	}
-    select {display: block;}
+    
     nav {
         color: #333;
         background-color: #fff;
@@ -118,8 +118,7 @@ table.dataTable tbody td {
 }
         
 ul.dtr-details {
-    display: inline-table;
-        border-top: 1px solid #efefef;
+    display: inline-table;     
 }
         
 table.dataTable>tbody>tr.child ul.dtr-details>li{
@@ -135,6 +134,14 @@ table.dataTable>tbody>tr.child ul.dtr-details>li {
 }
 table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     border: 1px solid #efefef;
+}
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fcac04;
+    background-color: #fcac04;
+    z-index: 0;
 }
         
 	.btn-floating {
@@ -1055,28 +1062,26 @@ p.flow-text {
     <table id="example" class="" style="width:100%">
         <thead>
           <tr>
+              <th>Cliente</th>
+              <th>Empresa transporte</th>
+            <th>Pago</th> 
+              
               <th>Hecho</th>
               <th>Enviado</th>
               <th>Factura</th>
               
               <th>Bultos</th>
-              <th>Empresa transporte</th>
-              <th>Cliente</th>
+              <th>Datos envío o entrega</th> 
+              <th>Observaciones</th>
               
-              <th>Pago</th>
-              <th>Datos envío o entrega</th>
-              <th>Factura</th>
-              
-              <th>Observaciones</th>              
               <th>Vegalomo 180g.</th>
-              <th>Criollo 180g.</th>
-              
-              <th>Morcillana 180g.</th>              
+              <th>Criollo 180g.</th>                          
               <th>Vegalomo 1Kg.</th>
-              <th>Criollo 1Kg.</th>
               
-              <th>Morcillana 380g.</th>              
-              <th>Seitán 1Kg.</th>
+              <th>Criollo 1Kg.</th>              
+              <th>Morcillana 380g.</th>          
+              <th>Seitán 1Kg.</th>     
+              
               <th>Hamburguesa Granel</th>
               
           </tr>
@@ -1084,38 +1089,30 @@ p.flow-text {
 
         <tbody>
           <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
+       
               
-            <td>#</td> <td>#</td> <td>#</td>
-             <td>#</td> <td>#</td> <td>#</td>
-              <td>#</td> <td>#</td> <td>#</td>
-      <td>#</td> <td>#</td> <td>#</td>
-                    <td>#</td> <td>#</td> <td>#</td>
+            <td>#</td> <td>#</td> <td>#</td> <td></td>
+            <td></td> <td></td> <td>#</td> <td>#</td>
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+            
               
           </tr>
           <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-                       
-            <td>#</td> <td>#</td> <td>#</td>
-             <td>#</td> <td>#</td> <td>#</td>
-              <td>#</td> <td>#</td> <td>#</td>
-      <td>#</td> <td>#</td> <td>#</td>
-                    <td>#</td> <td>#</td> <td>#</td>
+     
+            <td>#</td> <td>#</td> <td>#</td> <td></td>
+            <td></td> <td></td> <td>#</td> <td>#</td>
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+            
           </tr>
           <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-                 
-            <td>#</td> <td>#</td> <td>#</td>
-             <td>#</td> <td>#</td> <td>#</td>
-              <td>#</td> <td>#</td> <td>#</td>
-      <td>#</td> <td>#</td> <td>#</td>
-                    <td>#</td> <td>#</td> <td>#</td>
+     
+            <td>#</td> <td>#</td> <td>#</td> <td></td>
+            <td></td> <td></td> <td>#</td> <td>#</td>
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+            
               
           </tr>
         </tbody>
@@ -1156,7 +1153,16 @@ p.flow-text {
 document.addEventListener("DOMContentLoaded", function(){ $('.preloader-background').delay(700).fadeOut('slow'); });
     
 $.extend( $.fn.dataTable.defaults, {
-    responsive: true
+    responsive: true,
+    'columnDefs': [{
+         'targets': [3,4,5],
+         'searchable':false,
+         'orderable':false,
+         'className': 'dt-body-center',
+         'render': function (data, type, full, meta){
+             return '<label><input type="checkbox" class="filled-in" /><span></span></label>';
+         }
+      }],
 } );
     
 $(document).ready(function(){
@@ -1171,8 +1177,8 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
     $('.tabs').tabs();
     $('.scrollspy').scrollSpy();
-    
-    $('.parallax').parallax();
+    $('select').formSelect();
+
     
     $("#shopping_cart").on("click", ".add", function(){   
         var item_id = $(this).parent().parent().attr("id");     
