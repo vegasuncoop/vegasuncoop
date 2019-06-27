@@ -112,13 +112,39 @@
 	}
         
 table.dataTable tbody td {
-    padding: 8px 10px;
+    padding: 5px 5px;
     border: 1px solid #efefef;
     text-align: center;
 }
         
+.dtr-title{
+        
+}
+        
+.dtr-data{
+            
+ }  
+        
 ul.dtr-details {
     display: inline-table;     
+}
+        
+table.dataTable.no-footer {
+    border-bottom: 1px solid #111!important;
+}
+        
+table.dataTable thead th{
+    padding: 0px;
+    padding-right: 15px;
+    border: 0;
+}
+        
+table.dataTable thead th.sorting_disabled{
+    padding: 0px;
+    border:0;
+    margin: 0;
+    transform: rotate(-45deg);
+    transform-origin: center;
 }
         
 table.dataTable>tbody>tr.child ul.dtr-details>li{
@@ -135,6 +161,7 @@ table.dataTable>tbody>tr.child ul.dtr-details>li {
 table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     border: 1px solid #efefef;
 }
+
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
     top: 0;
     width: 20px;
@@ -154,7 +181,12 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     vertical-align: middle;
    
 }
-	.btn-floating {
+        
+.tachado{
+    text-decoration: line-through solid red;
+}
+        
+.btn-floating {
 	    width: 50px;
 		height: 50px;
 		line-height: 50px;		
@@ -1069,20 +1101,20 @@ p.flow-text {
         <div class="row">
             <div class="col s12">
                 
-    <table id="example" class="" style="width:100%">
+    <table id="example" class="display" style="width:100%">
         <thead>
           <tr>
               <th>Cliente</th>
               <th>Empresa transporte</th>
-            <th>Pago</th> 
-              
+                    
               <th>Hecho</th>
               <th>Enviado</th>
               <th>Factura</th>
               
               <th>Bultos</th>
-              <th>Datos envío o entrega</th> 
+              <th>Datos envío o entrega</th>
               <th>Observaciones</th>
+              <th>Pago</th> 
               
               <th>Vegalomo 180g.</th>
               <th>Criollo 180g.</th>                          
@@ -1090,8 +1122,7 @@ p.flow-text {
               
               <th>Criollo 1Kg.</th>              
               <th>Morcillana 380g.</th>          
-              <th>Seitán 1Kg.</th>     
-              
+              <th>Seitán 1Kg.</th>
               <th>Hamburguesa Granel</th>
               
           </tr>
@@ -1101,28 +1132,141 @@ p.flow-text {
           <tr>
        
               
-            <td>#</td> <td>#</td> <td>#</td> <td></td>
-            <td></td> <td></td> <td>#</td> <td>#</td>
-            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
-            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+            <td>Encuentro Vegano </td><td>Integra2</td>
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>Añadir algo para el evento solidario que tendrán</td><td> </td> 
+              
+            <td>17</td> <td>12</td> <td></td> 
+              
+            <td></td> <td></td> <td></td> <td></td>
             
               
           </tr>
           <tr>
      
-            <td>#</td> <td>#</td> <td>#</td> <td></td>
-            <td></td> <td></td> <td>#</td> <td>#</td>
-            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
-            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
-            
+            <td>Veggan </td><td>Integra2</td>
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>4</td> <td></td> <td></td>              
+            <td></td> <td></td> <td></td> <td></td>
           </tr>
           <tr>
      
-            <td>#</td> <td>#</td> <td>#</td> <td></td>
-            <td></td> <td></td> <td>#</td> <td>#</td>
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
             <td>#</td> <td>#</td> <td>#</td> <td>#</td>
-            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
             
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+            
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+            
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+            
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+            
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+            
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+            
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
+              
+          </tr>
+            
+            <tr>
+     
+            <td>Pico Chaparral </td> <td>SEUR</td> 
+              
+            <td>#</td>  <td>#</td>  <td>#</td>
+              
+             <td></td> <td>#</td> <td>#</td><td>#</td> 
+              
+            <td>#</td> <td>#</td> <td>#</td>              
+            <td>#</td> <td>#</td> <td>#</td> <td>#</td>
               
           </tr>
         </tbody>
@@ -1169,18 +1313,30 @@ $.extend( $.fn.dataTable.defaults, {
     
 $(document).ready(function(){
 
-    $('#example').DataTable({
-        scrollY: 300,
-          'columnDefs': [{
-         'targets': [3,4,5],
-         'searchable':false,
-         'orderable':false,
-         'className': 'dt-body-center',
-         'render': function (data, type, full, meta){
-             return '<label><input type="checkbox" class="filled-in" /><span></span></label>';
-         }
-      }],
-    } );
+   var table = $('#example').DataTable({
+        scrollY:        '50vh',
+        scrollCollapse: true,
+        paging:         true,
+        
+        'columnDefs': [
+             {
+                 targets: [2,3,4],
+                 searchable:false,
+                 orderable:false,
+                 className: 'dt-body-center',
+                 width: '30px',
+                 render: function (data, type, full, meta){
+                     return '<label><input type="checkbox" class="filled-in" /><span></span></label>';
+                 }
+            },
+            { targets: [5,6,8,9,10,11,12,13], width: '50px' },
+            { targets: [0,7], width: '180px' },
+        ],
+    });
+    
+    $( window ).resize(function() {
+        table.columns.adjust().draw();
+    });
     
     $('#mobile_menu').sidenav({ edge: 'left' });
 	$('#shopping_cart').sidenav({ edge: 'right' });
