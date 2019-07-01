@@ -346,6 +346,11 @@ li .card-image{
     margin: 0;
 }  
         
+#proceder_datos_envio{
+    text-align:right;
+    padding: 0px 10px 10px 0px;
+}  
+        
 .product-ud-price{
     margin: 0;
     padding: 0px 10px;
@@ -738,6 +743,8 @@ p.flow-text {
          <div class="input-field col s12">TOTAL: </div>
          <h5 class="right"><b>0</b>€</h5>
      </li>
+     
+     <li id="proceder_datos_envio"><button class="btn waves-effect waves-light" type="button" name="action">Pagar<i class="material-icons right">send</i></button></li>
 
 </ul>
   
@@ -1342,6 +1349,7 @@ $(document).ready(function(){
         $("#subtotal_carrito").hide();
         $("#iva_carrito").hide();
         $("#total_carrito").hide();
+        $("#proceder_datos_envio").hide();
     
    var table = $('#example').DataTable({
         scrollY:        '50vh',
@@ -1495,6 +1503,7 @@ $(document).ready(function(){
             $("#subtotal_carrito").hide();
             $("#iva_carrito").hide();
             $("#total_carrito").hide();
+            $("#proceder_datos_envio").hide();
         }
         $("#item_count").html(item_counted);
         
@@ -1511,6 +1520,7 @@ $(document).ready(function(){
         $("#subtotal_carrito").show();
         $("#iva_carrito").show();
         $("#total_carrito").show();
+        $("#proceder_datos_envio").show();
         
         var card_span = $("#card_"+item_to_put_in_shopping_cart+" .main_title").text();
         var card_image = $("#card_"+item_to_put_in_shopping_cart+" .card-image img").attr("src");
