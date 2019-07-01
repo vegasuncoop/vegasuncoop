@@ -709,40 +709,17 @@ p.flow-text {
  <ul class="sidenav" id="shopping_cart">
 
      <li><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> Carrito</h4></li>
-     <li id="empty_carrito"><figure><img src="list-is-empty-3.png"></figure><figcaption class="center"><h5>El carrito está vacío.</h5><a target="_blank" href="https://icons8.com" style="font-size: 10px;">(Illustration by Ouch.pics)</a></figcaption></li>
-     <!--
-     <li id="criollo_1000" class="product_in_carrito" data-total-product="0" style="border-bottom: 1px solid grey;">
-        <h6>Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
-		<div class="card-image">
-             <div class="card-image-wrapper">
-                <img class="criollo" src="./productos/criollo_granel.jpg"  >
-           </div>
-        </div>
-         <p class="product-ud-price">(La unidad sale a <b>13,75</b>€)</p>
-        <div class="input-field col s12">
-        <button class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button>                              
-        <input disabled class="center-align number" type="number" max="999" min="1" value="2">                
-        <button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button>                 
-        </div> 
-        <h5 class="right">27,50€</h5>
-     </li>
      
-     <li id="vegalomo_1000" class="product_in_carrito" data-total-product="0">
-        <h6>Vegalomo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
-		<div class="card-image">
-             <div class="card-image-wrapper">
-                <img class="criollo" src="./productos/vegalomo_granel.jpg"  >
-           </div>
-        </div>
-        <p class="product-ud-price">(La unidad sale a <b>13,75</b>€)</p>
-        <div class="input-field col s12">
-        <button class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button>                              
-        <input disabled class="center-align number" type="number" max="999" min="1" value="1">                
-        <button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button>                 
-        </div> 
-        <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;position: relative;display: inline-block;">13,75€</h5>
-     </li>
-     -->
+     <li id="empty_carrito">
+         <figure>
+             <img src="list-is-empty-3.png">
+         </figure>
+         <figcaption class="center">
+             <h5>El carrito está vacío.</h5>
+             <a target="_blank" href="https://icons8.com" style="font-size: 10px;">(Illustration by Ouch.pics)</a>
+         </figcaption>
+     </li>   
+     
      <li id="subtotal_carrito" data-subtotal="0">
          <div class="input-field col s12">SUBTOTAL: </div>
          <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;margin: 10px 0px;position: relative;display: inline-block;"><b>0</b>€</h5>
@@ -1361,7 +1338,11 @@ $.extend( $.fn.dataTable.defaults, {
 } );
     
 $(document).ready(function(){
-
+        $("#empty_carrito").show();
+        $("#subtotal_carrito").hide();
+        $("#iva_carrito").hide();
+        $("#total_carrito").hide();
+    
    var table = $('#example').DataTable({
         scrollY:        '50vh',
         scrollCollapse: true,
@@ -1511,6 +1492,9 @@ $(document).ready(function(){
         if(item_counted<=0){
             item_counted = 0;
             $("#empty_carrito").show();
+            $("#subtotal_carrito").hide();
+            $("#iva_carrito").hide();
+            $("#total_carrito").hide();
         }
         $("#item_count").html(item_counted);
         
@@ -1524,6 +1508,9 @@ $(document).ready(function(){
         var item_to_put_in_shopping_cart = $(this).attr("data-id");
         
         $("#empty_carrito").hide();
+        $("#subtotal_carrito").show();
+        $("#iva_carrito").show();
+        $("#total_carrito").show();
         
         var card_span = $("#card_"+item_to_put_in_shopping_cart+" .main_title").text();
         var card_image = $("#card_"+item_to_put_in_shopping_cart+" .card-image img").attr("src");
