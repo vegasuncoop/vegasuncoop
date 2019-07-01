@@ -1403,29 +1403,26 @@ $(document).ready(function(){
     $("#shopping_cart").on("click", ".add", function(){   
         var item_id = $(this).parent().parent().attr("id");     
         
-        var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;
-        console.log(gastos_envio);
+        var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;     
+        var unit_pre =  parseFloat( $('#'+item_id).attr('data-price') ) || 0 ;
         
-        var str_unit_pre = $('#'+item_id+" .product-ud-price b").html();
-        var unit_pre = parseFloat( str_unit_pre.replace(',','.').replace(' ','') || 0 );
-      
         var cant = parseFloat( $('#'+item_id+" input").val() ) || 0;        
         cant = cant+1;
         $('#'+item_id+" input").val(cant);
+        $('#'+item_id+' .remove').prop("disabled", false);
         
         var total_prod = parseFloat(cant * unit_pre) || 0;
         $('#'+item_id).attr('data-total-product', total_prod);
         
         var subtotal = parseFloat( $("#subtotal_carrito").attr("data-subtotal") ) || 0; 
-        subtotal = parseFloat( subtotal + total_prod) || 0;
+        subtotal = parseFloat( subtotal + unit_pre) || 0;
         $("#subtotal_carrito").attr("data-subtotal", subtotal);
         $("#subtotal_carrito h5 b").html( subtotal );
         var subtot = currencyFormatES( subtotal );        
         $("#subtotal_carrito h5 b").html( subtot );
 
         //$("#iva_carrito h5 b").text('');
-        var tot = parseFloat( $("#total_carrito h5 b").text()) || 0; 
-                    
+           
         total_prod = currencyFormatES( total_prod );
         $('#'+item_id+" h5 b").html(total_prod);
         
@@ -1439,23 +1436,25 @@ $(document).ready(function(){
         var item_id = $(this).parent().parent().attr("id"); 
         
         var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;
-        
-        var str_unit_pre = $('#'+item_id+" .product-ud-price b").html();
-        var unit_pre = parseFloat( str_unit_pre.replace(',','.').replace(' ','') || 0 );
-    
-        var cant = parseFloat( $('#'+item_id+" input").val() ) || 0;        
+        var unit_pre =  parseFloat( $('#'+item_id).attr('data-price') ) || 0 ; 
+            
+        var cant = parseFloat( $('#'+item_id+" input").val() ) || 0;  
+        //$('#'+item_id+' .remove').removeAttr("disabled");
+        $('#'+item_id+' .remove').prop("disabled", false);
         cant = cant-1;
         if(cant<=1){
             cant = 1;
+            $('#'+item_id+' .remove').prop("disabled", true);
+            //$('#'+item_id+' .remove').attr("disabled", "disabled");
         }
         $('#'+item_id+" input").val(cant);
         
         var total_producto = parseFloat(cant * unit_pre)|| 0;
         var total_prod = currencyFormatES( total_producto );
-        $('#'+item_id+" h5").html(total_prod);
+        $('#'+item_id+" h5 b").html(total_prod);
         
         var subtotal = parseFloat( $("#subtotal_carrito").attr("data-subtotal") ) || 0; 
-        subtotal = parseFloat( subtotal - total_producto) || 0;
+        subtotal = parseFloat( subtotal - unit_pre) || 0;
         $("#subtotal_carrito").attr("data-subtotal", subtotal);
         $("#subtotal_carrito h5 b").html( subtotal );
         var subtot = currencyFormatES( subtotal );        
@@ -1484,17 +1483,19 @@ $(document).ready(function(){
         var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;
                 
         var item_to_put_in_shopping_cart = $(this).attr("data-id");
+        
         var card_span = $("#card_"+item_to_put_in_shopping_cart+" .main_title").text();
         var card_image = $("#card_"+item_to_put_in_shopping_cart+" .card-image img").attr("src");
         //var card_price = $("#card_"+item_to_put_in_shopping_cart+" .card-title b").text();
         var product_price = parseFloat( $("#card_"+item_to_put_in_shopping_cart).attr('data-price') ) || 0;
+
         var card_price = currencyFormatES( product_price ); 
         
         if( $("#in_"+item_to_put_in_shopping_cart).length == 0 ) {//it doesn't exist
             //console.log("aún NO existe");
             $("#subtotal_carrito").before(
             //$("#shopping_cart").append( 
-                '<li id="in_'+item_to_put_in_shopping_cart+'" class="product_in_carrito" data-total-product="0"><h6>'+card_span+'<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6><div class="card-image"><div class="card-image-wrapper"><img src="'+card_image+'" ></div></div> <p class="product-ud-price">(La unidad sale a <b>'+card_price+'</b>)</p><div class="input-field col s12"><button class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button><input disabled class="center-align number" type="number" max="999" min="1" value="1"><button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button></div><h5 class="right"><b>'+card_price+'</b>€</h5></li>'
+                '<li id="in_'+item_to_put_in_shopping_cart+'" class="product_in_carrito" data-price="'+product_price+'" data-total-product="0"><h6>'+card_span+'<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6><div class="card-image"><div class="card-image-wrapper"><img src="'+card_image+'" ></div></div> <p class="product-ud-price">(La unidad sale a <b>'+card_price+'</b>)</p><div class="input-field col s12"><button disabled class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button><input disabled class="center-align number" type="number" max="999" min="1" value="1"><button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button></div><h5 class="right"><b>'+card_price+'</b>€</h5></li>'
             );
             item_count = item_count + 1;
         }else{
