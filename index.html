@@ -312,6 +312,15 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     line-height: 14px;
   }
         
+        li h5{
+                        vertical-align: middle;
+    text-align: right;
+    padding-right: 10px;
+    position: relative;
+    display: inline-block;
+        }
+
+        
 li .card-image{
     display: inline-flex;
     flex-flow: row;
@@ -358,6 +367,10 @@ li .card-image{
 .input-field button{width: 36px; font-size: 14px; outline: 0; padding: 0!important; text-align: center;}
 input.number{width: 40px!important;}
         
+.select-wrapper input.select-dropdown {
+    padding: 0px 10px;
+}
+        
 p.flow-text {
     line-height: 1;
     text-align: left;
@@ -369,6 +382,16 @@ p.flow-text {
         font-size: 14px;
         outline: 0;
     }
+        
+#iva_carrito, #iva_carrito input{margin:0;}
+        
+.dropdown-content li>a, .dropdown-content li>span {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    line-height: 32px;
+    padding: 0px 10px;
+}
         
 @media only screen and (min-width: 601px){
 		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
@@ -653,7 +676,7 @@ p.flow-text {
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><img src="./logo/logo_vegasun.png" /></a>
       <a href="#" data-target="mobile_menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-	  <a id="carrito" href="#" data-target="shopping_cart" class="right sidenav-trigger show-on-medium-and-up btn pulse" style="border-radius: 0;padding: 0;padding-left: 20px;margin: 0;"><i class="material-icons">shopping_cart</i><span id="item_count" class="new badge" data-badge-caption="">2</span></a>
+	  <a id="carrito" href="#" data-target="shopping_cart" class="right sidenav-trigger show-on-medium-and-up btn pulse" style="border-radius: 0;padding: 0;padding-left: 20px;margin: 0;"><i class="material-icons">shopping_cart</i><span id="item_count" class="new badge" data-badge-caption="">0</span></a>
       <ul class="right hide-on-med-and-down">		
         <li><a href="#productos">Productos</a></li>	
 		<li><a href="#tienda">Tienda</a></li>
@@ -679,9 +702,9 @@ p.flow-text {
  
  <ul class="sidenav" id="shopping_cart">
 
-     <li style="border-bottom: 1px solid grey;"><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> Carrito</h4></li>
-     
-     <li id="criollo_1000" style="border-bottom: 1px solid grey;">
+     <li><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> Carrito</h4></li>
+     <!--
+     <li id="criollo_1000" class="product_in_carrito" data-total-product="0" style="border-bottom: 1px solid grey;">
         <h6>Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
 		<div class="card-image">
              <div class="card-image-wrapper">
@@ -694,10 +717,10 @@ p.flow-text {
         <input disabled class="center-align number" type="number" max="999" min="1" value="2">                
         <button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button>                 
         </div> 
-        <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;position: relative;display: inline-block;">27,50€</h5>
+        <h5 class="right">27,50€</h5>
      </li>
      
-     <li id="vegalomo_1000" style="border-bottom: 1px solid grey;">
+     <li id="vegalomo_1000" class="product_in_carrito" data-total-product="0">
         <h6>Vegalomo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
 		<div class="card-image">
              <div class="card-image-wrapper">
@@ -712,20 +735,24 @@ p.flow-text {
         </div> 
         <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;position: relative;display: inline-block;">13,75€</h5>
      </li>
-     
-     <li id="subtotal_carrito" style="border-bottom: 1px solid grey;">
+     -->
+     <li id="subtotal_carrito" data-subtotal="0">
          <div class="input-field col s12">SUBTOTAL: </div>
          <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;margin: 10px 0px;position: relative;display: inline-block;"><b>0</b>€</h5>
      </li>
      
-     <li id="iva_carrito" style="border-bottom: 1px solid grey;">
-         <div class="input-field col s12">IVA (<b>10</b>%):</div>
-         <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;margin: 10px 0px;position: relative;display: inline-block;"><b>10</b>€</h5>
+     <li id="iva_carrito">         
+            <select>
+                <option value="" disabled selected>Elija forma de envío</option>
+                <option value="0">Recogida en local (+0,00€)</option>
+                <option value="9">Envío a Península (+9,00€)</option>
+                <option value="18">Envío a Canarias (+18,00€)</option>
+            </select>
      </li>
      
-      <li id="total_carrito" style="border-bottom: 1px solid grey;">
+      <li id="total_carrito" data-total="0">
          <div class="input-field col s12">TOTAL: </div>
-         <h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;margin: 10px 0px;position: relative;display: inline-block;"><b>0</b>€</h5>
+         <h5 class="right"><b>0</b>€</h5>
      </li>
 
 </ul>
@@ -922,7 +949,7 @@ p.flow-text {
 	</div>
     <div class="row">
         <div class="col s12 m6 l4 xl4">
-                <div id="card_criollo_180" class="card hoverable">
+                <div id="card_criollo_180" data-price="2.80" class="card hoverable">
                      <div class="card-content-title">
                         <span class="main_title card-title grey-text text-darken-4">Adobo Criollo 180g.</span>                  
                     </div>
@@ -939,7 +966,7 @@ p.flow-text {
         </div>
         
          <div class="col s12 m6 l4 xl4">
-                <div id="card_criollo_1000" class="card hoverable">
+                <div id="card_criollo_1000" data-price="13.75" class="card hoverable">
                     <div class="card-content-title">
                         <span class="main_title card-title grey-text text-darken-4">Adobo Criollo 1Kg.</span>                  
                     </div>
@@ -958,7 +985,7 @@ p.flow-text {
             </div>
     
         <div class="col s12 m6 l4 xl4">
-                <div id="card_morcillana_180" class="card hoverable">
+                <div id="card_morcillana_180" data-price="2.80" class="card hoverable">
                     
                     <div class="card-content-title">
                         <span class="main_title card-title grey-text text-darken-4">Morcillana 180g.</span>                  
@@ -977,7 +1004,7 @@ p.flow-text {
         </div>
         
          <div class="col s12 m6 l4 xl4">
-                <div id="card_morcillana_380" class="card hoverable">
+                <div id="card_morcillana_380" data-price="4.90" class="card hoverable">
                     <div class="card-content-title">
                         <span class="main_title card-title grey-text text-darken-4">Morcillana 380g.</span>                  
                     </div>
@@ -995,7 +1022,7 @@ p.flow-text {
                 </div>
             </div>
                 <div class="col s12 m6 l4 xl4">
-                <div id="card_vegalomo_180" class="card hoverable">
+                <div id="card_vegalomo_180" data-price="2.80" class="card hoverable">
                     <div class="card-content-title">
                         <span class="main_title card-title grey-text text-darken-4">Vegalomo 180g.</span>                  
                     </div>
@@ -1013,7 +1040,7 @@ p.flow-text {
         </div>
         
          <div class="col s12 m6 l4 xl4">
-                <div id="card_vegalomo_1000" class="card hoverable">
+                <div id="card_vegalomo_1000" data-price="13.75" class="card hoverable">
                     <div class="card-content-title">
                         <span class="main_title card-title grey-text text-darken-4">Vegalomo 1Kg.</span>                  
                     </div>
@@ -1362,8 +1389,22 @@ $(document).ready(function(){
     $('select').formSelect();
 
     
+    $("#iva_carrito select").change( function(){
+        var opcion = parseFloat( $(this).val() ) || 0;
+        var subtotal = parseFloat( $("#subtotal_carrito").attr("data-subtotal") ) || 0; 
+        console.log(opcion);
+        var total = parseFloat( subtotal + opcion) || 0;
+        
+        var total_carrito = currencyFormatES( total );        
+        $("#total_carrito h5 b").html(total_carrito);
+        
+    });
+    
     $("#shopping_cart").on("click", ".add", function(){   
         var item_id = $(this).parent().parent().attr("id");     
+        
+        var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;
+        console.log(gastos_envio);
         
         var str_unit_pre = $('#'+item_id+" .product-ud-price b").html();
         var unit_pre = parseFloat( str_unit_pre.replace(',','.').replace(' ','') || 0 );
@@ -1372,10 +1413,28 @@ $(document).ready(function(){
         cant = cant+1;
         $('#'+item_id+" input").val(cant);
         
-        var total_prod = currencyFormatES( cant * unit_pre );
-        $('#'+item_id+" h5").html(total_prod);
-    
+        var total_prod = parseFloat(cant * unit_pre) || 0;
+        $('#'+item_id).attr('data-total-product', total_prod);
+        
+        var subtotal = parseFloat( $("#subtotal_carrito").attr("data-subtotal") ) || 0; 
+        subtotal = parseFloat( subtotal + total_prod) || 0;
+        $("#subtotal_carrito").attr("data-subtotal", subtotal);
+        $("#subtotal_carrito h5 b").html( subtotal );
+        var subtot = currencyFormatES( subtotal );        
+        $("#subtotal_carrito h5 b").html( subtot );
+
+        //$("#iva_carrito h5 b").text('');
+        var tot = parseFloat( $("#total_carrito h5 b").text()) || 0; 
+                    
+        total_prod = currencyFormatES( total_prod );
+        $('#'+item_id+" h5 b").html(total_prod);
+        
+        var total = parseFloat( subtotal + gastos_envio) || 0;        
+        var total_carrito = currencyFormatES( total );        
+        $("#total_carrito h5 b").html(total_carrito);
+        
     });
+    
     $("#shopping_cart").on("click", ".remove", function(){    
         var item_id = $(this).parent().parent().attr("id"); 
         
@@ -1392,8 +1451,10 @@ $(document).ready(function(){
         var total_prod = currencyFormatES( cant * unit_pre );
         $('#'+item_id+" h5").html(total_prod);
         
+        //$("#subtotal_carrito h5 b").html( '' );
+        
     });
-
+    
     //asociar evento click a los productos de carrito creados al pulsar shop_in
     $("#shopping_cart").on("click", ".shop_out", function(){
         var item_id = $(this).parent().parent().attr("id");
@@ -1401,6 +1462,8 @@ $(document).ready(function(){
         item_count = item_count - 1;
         $("#item_count").html(item_count);
         $("#"+item_id).remove();     
+        
+         $("#subtotal_carrito h5 b").html( '0.00' );
      });
     
     $("#tienda").on("click", ".shop_in", function(){        
@@ -1409,11 +1472,15 @@ $(document).ready(function(){
         var item_to_put_in_shopping_cart = $(this).attr("data-id");
         var card_span = $("#card_"+item_to_put_in_shopping_cart+" .main_title").text();
         var card_image = $("#card_"+item_to_put_in_shopping_cart+" .card-image img").attr("src");
-        var card_price = $("#card_"+item_to_put_in_shopping_cart+" .card-title b").text();
+        //var card_price = $("#card_"+item_to_put_in_shopping_cart+" .card-title b").text();
+        var card_price = $("#card_"+item_to_put_in_shopping_cart).attr('data-price');
         
         if( $("#in_"+item_to_put_in_shopping_cart).length == 0 ) {//it doesn't exist
             //console.log("aún NO existe");
-            $("#shopping_cart").append( '<li id="in_'+item_to_put_in_shopping_cart+'"><h6>'+card_span+'<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6><div class="card-image"><div class="card-image-wrapper"><img src="'+card_image+'" ></div></div> <p class="product-ud-price">(La unidad sale a <b>'+card_price+'</b>)</p><div class="input-field col s12"><button class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button><input disabled class="center-align number" type="number" max="999" min="1" value="1"><button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button></div><h5 class="right" style="vertical-align: middle;text-align: right;padding-right: 10px;position: relative;display: inline-block;">'+card_price+'</h5></li>');
+            $("#subtotal_carrito").before(
+            //$("#shopping_cart").append( 
+                '<li id="in_'+item_to_put_in_shopping_cart+'" class="product_in_carrito" data-total-product="0"><h6>'+card_span+'<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6><div class="card-image"><div class="card-image-wrapper"><img src="'+card_image+'" ></div></div> <p class="product-ud-price">(La unidad sale a <b>'+card_price+'</b>)</p><div class="input-field col s12"><button class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button><input disabled class="center-align number" type="number" max="999" min="1" value="1"><button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button></div><h5 class="right"><b>'+card_price+'</b>€</h5></li>'
+            );
             item_count = item_count + 1;
         }else{
             //console.log("YA existe");
@@ -1436,7 +1503,8 @@ function currencyFormatES(num) {
     num
       .toFixed(2) // always two decimal digits
       .replace('.', ',') // replace decimal point character with ,
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €'
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+      //.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €'
   ) // use . as a separator
 }
 </script>
