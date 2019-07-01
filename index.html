@@ -709,6 +709,7 @@ p.flow-text {
  <ul class="sidenav" id="shopping_cart">
 
      <li><h4 class="" style="padding-left: 20px; margin: 7px 0px;"><i style="font-size: 2.4rem; margin: 0 10px;" class="material-icons right">shopping_cart</i> Carrito</h4></li>
+     <li id="empty_carrito"><figure><img src="list-is-empty-3.png"></figure><figcaption class="center"><h5>El carrito está vacío.</h5><a target="_blank" href="https://icons8.com" style="font-size: 10px;">(Illustration by Ouch.pics)</a></figcaption></li>
      <!--
      <li id="criollo_1000" class="product_in_carrito" data-total-product="0" style="border-bottom: 1px solid grey;">
         <h6>Adobo Criollo 1Kg.<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6>
@@ -1509,6 +1510,7 @@ $(document).ready(function(){
         item_counted = parseInt(item_counted - cant) || 0;
         if(item_counted<=0){
             item_counted = 0;
+            $("#empty_carrito").show();
         }
         $("#item_count").html(item_counted);
         
@@ -1517,11 +1519,11 @@ $(document).ready(function(){
      });
     
     $("#tienda").on("click", ".shop_in", function(){        
-        var item_count = parseInt( $("#item_count").html() ) || 0;
-        
-        var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;
-                
+        var item_count = parseInt( $("#item_count").html() ) || 0;        
+        var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;                
         var item_to_put_in_shopping_cart = $(this).attr("data-id");
+        
+        $("#empty_carrito").hide();
         
         var card_span = $("#card_"+item_to_put_in_shopping_cart+" .main_title").text();
         var card_image = $("#card_"+item_to_put_in_shopping_cart+" .card-image img").attr("src");
@@ -1554,7 +1556,7 @@ $(document).ready(function(){
             $("#in_"+item_to_put_in_shopping_cart+' .add').trigger('click');
             item_count = item_count + 1;
         }
-                        
+
         //console.log(card_span);        
         $("#item_count").html(item_count);
        
