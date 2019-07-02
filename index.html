@@ -952,7 +952,7 @@ p.flow-text {
                     </div>
                      <div class="card-content">                        
                          <span class="card-title grey-text text-darken-4 left-align">P.V.P.: <b>2,80€</b>
-                            <a data-id="criollo_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="criollo_180" class="waves-effect waves-light btn right shop_in" onclick="M.toast({html: '¡Añadido un Adobo Criollo de 180g. al carrito!'})"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
                 </div>
@@ -970,7 +970,7 @@ p.flow-text {
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">P.V.P.: <b>13,75€</b>                   
-                            <a data-id="criollo_1000" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="criollo_1000" class="waves-effect waves-light btn right shop_in" onclick="M.toast({html: '¡Añadido un Adobo Criollo de 1Kg. al carrito!'})"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
                    
@@ -989,7 +989,7 @@ p.flow-text {
                     </div>
                     <div class="card-content">                       
                         <span class="card-title grey-text text-darken-4">P.V.P.: <b>2,80€</b> 
-                            <a data-id="morcillana_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="morcillana_180" class="waves-effect waves-light btn right shop_in" onclick="M.toast({html: '¡Añadida una Morcillana de 180g. al carrito!'})"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -1008,7 +1008,7 @@ p.flow-text {
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4">P.V.P.: <b>4,90€</b>                 
-                            <a data-id="morcillana_380" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="morcillana_380" class="waves-effect waves-light btn right shop_in" onclick="M.toast({html: '¡Añadida una Morcillana de 380g. al carrito!'})"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
                    
@@ -1025,7 +1025,7 @@ p.flow-text {
                     </div>
                     <div class="card-content">                       
                         <span class="card-title activator grey-text text-darken-4">P.V.P.: <b>2,80€</b>
-                            <a data-id="vegalomo_180" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="vegalomo_180" class="waves-effect waves-light btn right shop_in" onclick="M.toast({html: '¡Añadido un Vegalomo de 180g. al carrito!'})"><i class="material-icons right">add_shopping_cart</i></a>
                         </span>
                     </div>
               
@@ -1044,7 +1044,7 @@ p.flow-text {
                     <div class="card-content">
                         
                         <span class="card-title grey-text text-darken-4"> P.V.P.: <b>13,75€</b>                    
-                            <a data-id="vegalomo_1000" class="waves-effect waves-light btn right shop_in pulse"><i class="material-icons right">add_shopping_cart</i></a>
+                            <a data-id="vegalomo_1000" class="waves-effect waves-light btn right shop_in" onclick="M.toast({html: '¡Añadido un Vegalomo de 1Kg. al carrito!'})"><i class="material-icons right">add_shopping_cart</i></a>
                          </span>
                     </div>
                    
@@ -1378,7 +1378,12 @@ $(document).ready(function(){
     $( window ).resize(function() {
         table.columns.adjust().draw();
     });
-    
+    /*
+    var db = new Dexie("pedidos_database");
+    db.version(1).stores({
+        pedidos: 'nombre_producto, peso_producto, precio_producto, cantidad_producto, fecha_pedido'
+    });
+    */
     $('#mobile_menu').sidenav({ edge: 'left' });
 	$('#shopping_cart').sidenav({ edge: 'right' });
     
