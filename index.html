@@ -96,7 +96,11 @@
 		top: 0;
 		bottom: 0;
 	}
-	
+        
+	input {
+        text-transform: capitalize;
+    }
+        
 	nav {
 		background-color: #fff; 
 	}
@@ -421,7 +425,7 @@ p.flow-text {
     line-height: 32px;
     padding: 0px 10px;
 }
-        
+    
 @media only screen and (min-width: 601px){
 		nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 			height: 50px;
@@ -773,46 +777,88 @@ p.flow-text {
         <p>Aquí va a ir el formulario para rellenar los datos:</p>
         
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12  m6 l4">
                 <i class="material-icons prefix">account_circle</i>
                 <input id="first_name" type="text" class="validate" required>
                 <label for="first_name">Nombre</label>
                 <span class="helper-text" data-error="Escriba su nombre, por favor." data-success="BIEN"></span>
             </div>
-        </div>
-        
-         <div class="row">
-            <div class="input-field col s12">
+            
+            <div class="input-field col s12 m6 l8">
+                  <i class="material-icons prefix">account_circle</i>
                   <input id="surname" type="text" class="validate" required>
                   <label for="surname">Apellidos</label>
                   <span class="helper-text" data-error="Escriba su(s) apellido(s), por favor." data-success="BIEN"></span>
             </div>
+  
+        </div>
+        
+         <div class="row">
+            
         </div>
         
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12  m6 l8">
+                <i class="material-icons prefix">home</i>
+                <textarea id="direccion" class="materialize-textarea" required></textarea>
+                <label for="direccion">Dirección</label>
+                <span class="helper-text" data-error="Proporciónenos una dirección para que podamos enviarle el pedido, por favor." data-success="BIEN"></span>
+            </div>
+            <div class="input-field col s12  m6 l4">
+                <i class="material-icons prefix">speaker_notes</i>
+                <input id="codigo_postal" type="number" class="validate" required>
+                <label for="codigo_postal">Código Postal</label>
+                <span class="helper-text" data-error="Sólo números, por favor." data-success="BIEN"></span>
+            </div>
+           
+            
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12  m6 l4">    
+                <i class="material-icons prefix">business</i>
+                <input type="text" id="localidad" name="localidad" class="validate" required>
+                <label for="localidad">Localidad/Ciudad</label>
+            </div>
+            
+             <div class="input-field col s12  m6 l4">
                   <i class="material-icons prefix">location_on</i>
-                  <input type="text" id="autocomplete-input" class="autocomplete" required>
-                  <label for="autocomplete-input">Provincia</label>
+                  <input type="text" id="provincia" class="autocomplete" required>
+                  <label for="provincia">Provincia</label>
+            </div>
+            <div class="input-field col s12  m6 l4">          
+                <i class="material-icons prefix">public</i>
+                <input type="text" id="pais" name="pais" disabled value="España">
+                <label for="pais">País</label>
             </div>
         </div>
         
         <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix"> mail_outline</i>
-                <input id="email" type="email" class="validate" required>
+           
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12  m6 l4">
+                <i class="material-icons prefix">phone</i>
+                <input id="telefono" name="telefono" type="number" class="validate">
+                <label for="telefono">Teléfono</label>
+                <span class="helper-text" data-error="Sólo números, por favor." data-success="BIEN"></span>
+            </div> 
+            
+            <div class="input-field col s12  m6 l4">
+                <i class="material-icons prefix">phone_android</i>
+                <input id="movil" name="movil" type="number" class="validate">
+                <label for="movil">Teléfono Móvil</label>
+                <span class="helper-text" data-error="Sólo números, por favor." data-success="BIEN"></span>
+            </div>
+            
+             <div class="input-field col s12  m6 l4">
+                <i class="material-icons prefix">mail_outline</i>
+                <input id="email" name="email" type="email" class="validate" required>
                 <label for="email">Email</label>
                 <span class="helper-text" data-error="MAL" data-success="BIEN">(Para enviarle una copia en PDF de la factura)</span>
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">phone</i>
-                <input id="icon_telephone" type="tel" class="validate">
-                <label for="icon_telephone">Teléfono</label>
-                <span class="helper-text" data-error="MAL" data-success="BIEN"></span>
-            </div>
+            
         </div>
     </div>
     
@@ -1485,7 +1531,9 @@ $(document).ready(function(){
     $('select').formSelect();
     $('.modal').modal();
     
-    $('input.autocomplete').autocomplete({
+     M.textareaAutoResize($('#direccion'));
+    
+    $('#provincia').autocomplete({
       data: {
         "Albacete": null,
         "Alicante/Alacant": null,
