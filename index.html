@@ -876,9 +876,23 @@ p.flow-text {
     
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-red btn-flat">Volver</a>
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Pagar</a>
+        <a href="#!" class="modal-close modal-trigger waves-effect waves-green btn-flat" data-target="modal_datos_pago">Pagar</a>
     </div>
     
+</div>
+    
+<div id="modal_datos_pago" class="modal modal-full modal-fixed-footer">
+    
+    <div class="modal-content">   
+         <h4>Datos de pago</h4>
+        
+    </div>
+    
+    <div class="modal-footer">
+        <a href="#!" class="modal-close modal-trigger waves-effect waves-red btn-flat" data-target="modal_datos_envio">Volver</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Confirmar</a>
+        
+    </div>    
 </div>
     
 </header>
