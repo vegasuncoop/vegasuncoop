@@ -183,7 +183,6 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     vertical-align: middle;
    
 }
-        
 .tachado{
     text-decoration: line-through solid red;
 }
@@ -1348,11 +1347,29 @@ $.extend( $.fn.dataTable.defaults, {
 } );
     
 $(document).ready(function(){
-        $("#empty_carrito").show();
-        $("#subtotal_carrito").hide();
-        $("#iva_carrito").hide();
-        $("#total_carrito").hide();
-        $("#proceder_datos_envio").hide();
+    $("#empty_carrito").show();
+    $("#subtotal_carrito").hide();
+    $("#iva_carrito").hide();
+    $("#total_carrito").hide();
+    $("#proceder_datos_envio").hide();
+   
+    var json_vegalomo_180 = localStorage.getItem('in_vegalomo_180');
+    var json_vegalomo_1000 = localStorage.getItem('in_vegalomo_1000');
+    
+    var json_morcillana_180 = localStorage.getItem('in_morcillana_180');
+    var json_morcillana_380 = localStorage.getItem('in_morcillana_380');
+    
+    var json_criollo_180 = localStorage.getItem('in_criollo_180');
+    var json_criollo_1000 = localStorage.getItem('in_criollo_1000');
+    
+    populate_carrito('in_vegalomo_180', json_vegalomo_180);
+    populate_carrito('in_vegalomo_1000', json_vegalomo_1000);
+    
+    populate_carrito('in_morcillana_180', json_morcillana_180);
+    populate_carrito('in_morcillana_380', json_morcillana_380);
+    
+    populate_carrito('in_criollo_180', json_criollo_180);
+    populate_carrito('in_criollo_1000', json_criollo_1000);
     
    var table = $('#example').DataTable({
         scrollY:        '50vh',
@@ -1401,6 +1418,8 @@ $(document).ready(function(){
         
         var total_carrito = currencyFormatES( total );        
         $("#total_carrito h5 b").html(total_carrito);
+               
+        localStorage.setItem('shipping_cost', opcion);
         
     });
     
@@ -1415,8 +1434,8 @@ $(document).ready(function(){
         $('#'+item_id+" input").val(cant);
         $('#'+item_id+' .remove').prop("disabled", false);
         
-        var total_prod = parseFloat(cant * unit_pre) || 0;
-        $('#'+item_id).attr('data-total-product', total_prod);
+        var total_producto = parseFloat(cant * unit_pre) || 0;
+        $('#'+item_id).attr('data-total-product', total_producto);
         
         var subtotal = parseFloat( $("#subtotal_carrito").attr("data-subtotal") ) || 0; 
         subtotal = parseFloat( subtotal + unit_pre) || 0;
@@ -1427,7 +1446,7 @@ $(document).ready(function(){
 
         //$("#iva_carrito h5 b").text('');
            
-        total_prod = currencyFormatES( total_prod );
+        total_prod = currencyFormatES( total_producto );
         $('#'+item_id+" h5 b").html(total_prod);
         
         var total = parseFloat( subtotal + gastos_envio) || 0;        
@@ -1437,6 +1456,9 @@ $(document).ready(function(){
         var item_counted = parseInt( $("#item_count").html() ) || 0;
         item_counted++;
         $("#item_count").html(item_counted);
+        
+        var producto = {cantidad:cant, precio_unitario:unit_pre, total:total_producto.toFixed(2)};
+        localStorage.setItem(item_id, JSON.stringify(producto));
         
     });
     
@@ -1480,6 +1502,9 @@ $(document).ready(function(){
         }
         $("#item_count").html(item_counted);
         
+        var producto = {cantidad:cant, precio_unitario:unit_pre, total: parseFloat(total_producto.toFixed(2)) };
+        localStorage.setItem(item_id, JSON.stringify(producto));
+        
     });
     
     //asociar evento click a los productos de carrito creados al pulsar shop_in
@@ -1513,13 +1538,13 @@ $(document).ready(function(){
             $("#total_carrito").hide();
             $("#proceder_datos_envio").hide();
         }
-        $("#item_count").html(item_counted);
         
-        $("#"+item_id).remove(); 
-        
+        $("#item_count").html(item_counted);     
+        localStorage.removeItem(item_id);        
+        $("#"+item_id).remove();
      });
     
-    $("#tienda").on("click", ".shop_in", function(){        
+    $("#tienda").on("click", ".shop_in", function(){      
         var item_count = parseInt( $("#item_count").html() ) || 0;        
         var gastos_envio = parseFloat( $("#iva_carrito select").val() ) || 0;                
         var item_to_put_in_shopping_cart = $(this).attr("data-id");
@@ -1545,6 +1570,10 @@ $(document).ready(function(){
             );
             item_count = item_count + 1;
             
+            //localStorage.setItem('in_'+item_to_put_in_shopping_cart, card_price );            
+            var producto = {cantidad:"1", precio_unitario:product_price, total:product_price};
+            localStorage.setItem('in_'+item_to_put_in_shopping_cart, JSON.stringify(producto));
+            
             var subtotal = parseFloat( $("#subtotal_carrito").attr("data-subtotal") ) || 0; 
             subtotal = parseFloat( subtotal + product_price ) || 0;
             $("#subtotal_carrito").attr("data-subtotal", subtotal);
@@ -1559,14 +1588,80 @@ $(document).ready(function(){
         }else{
             //console.log("YA existe");
             $("#in_"+item_to_put_in_shopping_cart+' .add').trigger('click');
-            item_count = item_count + 1;
+            item_count = item_count + 1;        
         }
 
         //console.log(card_span);        
         $("#item_count").html(item_count);
        
     });
+
 });
+    
+function calcular_total_cuenta_carrito(){
+    
+    var sumatorio=0.00;
+    
+    $(".product_in_carrito").each(function( index ) {
+        
+        sumatorio += parseFloat ($( this ).attr('data-total-product')) || 0;                
+        //console.log( index + ": " + $( this ).attr('data-total-product') );
+        
+    });
+    
+    //console.log("subtotal: " + sumatorio );
+    $("#subtotal_carrito").attr("data-subtotal", sumatorio);   
+    var subtot = currencyFormatES( sumatorio );        
+    $("#subtotal_carrito h5 b").html( subtot );
+    
+    var gastos_envio = parseFloat(localStorage.getItem('shipping_cost')) || 0;
+    $("#iva_carrito select").val(gastos_envio);
+    
+    var total = parseFloat( sumatorio + gastos_envio) || 0;        
+    var total_carrito = currencyFormatES( total );        
+    $("#total_carrito h5 b").html(total_carrito); 
+}
+    
+function populate_carrito(item_id, json_data_item){
+        //console.log(json_data_item);
+        
+        if(json_data_item!=null){
+            
+            var card_id = item_id.substr(3);
+            //console.log(card_id);
+            var card_span = $("#card_"+card_id+" .main_title").text();
+            var card_image = $("#card_"+card_id+" .card-image img").attr("src");
+        
+            var producto = JSON.parse(json_data_item);
+            var qty = parseInt(producto.cantidad);
+            var product_price = parseFloat(producto.precio_unitario);
+            var product_total = parseFloat(producto.total);
+            var card_price = currencyFormatES( product_price ); 
+            var card_total = currencyFormatES( product_total );
+          
+            //console.log(producto);
+            
+            if( $("#"+item_id).length == 0 ) {
+                //console.log("aún NO existe");
+                $("#subtotal_carrito").before(
+                //$("#shopping_cart").append( 
+                    '<li id="'+item_id+'" class="product_in_carrito" data-price="'+product_price+'" data-total-product="'+product_total+'"><h6>'+card_span+'<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6><div class="card-image"><div class="card-image-wrapper"><img src="'+card_image+'" ></div></div> <p class="product-ud-price">(La unidad sale a <b>'+card_price+'</b>€)</p><div class="input-field col s12"><button disabled class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button><input disabled class="center-align number" type="number" max="999" min="1" value="'+qty+'"><button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button></div><h5 class="right"><b>'+card_total+'</b>€</h5></li>'
+                );
+            }
+            
+            calcular_total_cuenta_carrito();
+            
+            var item_counted = parseInt( $("#item_count").html() ) || 0;
+            item_counted = item_counted + qty;
+            $("#item_count").html(item_counted);
+            
+            $("#empty_carrito").hide();
+            $("#subtotal_carrito").show();
+            $("#iva_carrito").show();
+            $("#total_carrito").show();
+            $("#proceder_datos_envio").show();
+        }
+    }
     
 function currencyFormatES(num) {
   return (
