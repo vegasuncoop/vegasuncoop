@@ -1646,8 +1646,23 @@ $(document).ready(function(){
     });
     
     $('#localidad').keyup( function(){
+        var movil = $('#movil').val();        
+        localStorage.setItem('movil', movil);
+    });
+    
+     $('#movil').keyup( function(){
         var localidad = $('#localidad').val();        
         localStorage.setItem('localidad', localidad);
+    });
+    
+     $('#telefono').keyup( function(){
+        var telefono = $('#telefono').val();        
+        localStorage.setItem('telefono', telefono);
+    });
+    
+    $('#email').keyup( function(){
+        var email = $('#email').val();        
+        localStorage.setItem('email', email);
     });
     
     var nombre = localStorage.getItem('nombre');
@@ -1664,6 +1679,15 @@ $(document).ready(function(){
     
     var localidad = localStorage.getItem('localidad');      
     $('#localidad').val(localidad);
+    
+    var movil = localStorage.getItem('movil');      
+    $('#movil').val(movil);
+    
+    var telefono = localStorage.getItem('telefono');      
+    $('#telefono').val(telefono);
+    
+    var email = localStorage.getItem('email');      
+    $('#email').val(email);
     
     M.updateTextFields();
     
