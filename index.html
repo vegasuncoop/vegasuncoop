@@ -1518,7 +1518,7 @@ $(document).ready(function(){
     populate_carrito('in_criollo_180', json_criollo_180);
     populate_carrito('in_criollo_1000', json_criollo_1000);
     
-   var table = $('#example').DataTable({
+    var table = $('#example').DataTable({
         scrollY:        '50vh',
         scrollCollapse: true,
         paging:         true,
@@ -1559,62 +1559,89 @@ $(document).ready(function(){
     
      M.textareaAutoResize($('#direccion'));
     
+    var provincia = localStorage.getItem('provincia');
+    
     $('#provincia').autocomplete({
-      data: {
-        "Albacete": null,
-        "Alicante/Alacant": null,
-        "Almería": null,
-        "Araba/Álava": null,
-        "Asturias": null,
-        "Ávila": null,
-        "Badajoz": null,
-        "Balears, Illes": null,
-        "Barcelona": null,
-        "Bizkaia": null,
-        "Burgos": null,
-        "Cáceres": null,
-        "Cádiz": null,
-        "Cantabria": null,
-        "Castellón/Castelló": null,
-        "Ciudad Real": null,
-        "Córdoba": null,
-        "Coruña, A": null,
-        "Cuenca": null,
-        "Gipuzkoa": null,
-        "Girona": null,
-        "Granada": null,
-        "Guadalajara": null,
-        "Huelva": null,
-        "Huesca": null,
-        "Jaén": null,
-        "León": null,
-        "Lleida": null,
-        "Lugo": null,
-        "Madrid": null,
-        "Málaga": null,
-        "Murcia": null,
-        "Navarra": null,
-        "Ourense": null,
-        "Palencia": null,
-        "Palmas, Las": null,
-        "Pontevedra": null,
-        "Rioja, La": null,
-        "Salamanca": null,
-        "Santa Cruz de Tenerife": null,
-        "Segovia": null,
-        "Sevilla": null,
-        "Soria": null,
-        "Tarragona": null,
-        "Teruel": null,
-        "Toledo": null,
-        "Valencia/València": null,
-        "Valladolid": null,
-        "Zamora": null,
-        "Zaragoza": null,
-        "Ceuta": null,
-        "Melilla": null,
-      },
+        data: {
+            "Albacete": null,
+            "Alicante/Alacant": null,
+            "Almería": null,
+            "Araba/Álava": null,
+            "Asturias": null,
+            "Ávila": null,
+            "Badajoz": null,
+            "Balears, Illes": null,
+            "Barcelona": null,
+            "Bizkaia": null,
+            "Burgos": null,
+            "Cáceres": null,
+            "Cádiz": null,
+            "Cantabria": null,
+            "Castellón/Castelló": null,
+            "Ciudad Real": null,
+            "Córdoba": null,
+            "Coruña, A": null,
+            "Cuenca": null,
+            "Gipuzkoa": null,
+            "Girona": null,
+            "Granada": null,
+            "Guadalajara": null,
+            "Huelva": null,
+            "Huesca": null,
+            "Jaén": null,
+            "León": null,
+            "Lleida": null,
+            "Lugo": null,
+            "Madrid": null,
+            "Málaga": null,
+            "Murcia": null,
+            "Navarra": null,
+            "Ourense": null,
+            "Palencia": null,
+            "Palmas, Las": null,
+            "Pontevedra": null,
+            "Rioja, La": null,
+            "Salamanca": null,
+            "Santa Cruz de Tenerife": null,
+            "Segovia": null,
+            "Sevilla": null,
+            "Soria": null,
+            "Tarragona": null,
+            "Teruel": null,
+            "Toledo": null,
+            "Valencia/València": null,
+            "Valladolid": null,
+            "Zamora": null,
+            "Zaragoza": null,
+            "Ceuta": null,
+            "Melilla": null,
+        },
+        onAutocomplete: function(){
+            var provincia = $("#provincia").val();              
+            localStorage.setItem('provincia', provincia);
+            
+        }
+                                 
     });
+    $("#provincia").val(provincia);
+    
+    $('#first_name').keyup( function(){
+        var nombre = $('#first_name').val();        
+        localStorage.setItem('nombre', nombre);
+    });
+    
+    $('#surname').keyup( function(){
+        var apellidos = $('#surname').val();        
+        localStorage.setItem('apellidos', apellidos);
+    });
+    
+    var nombre = localStorage.getItem('nombre');
+    $('#first_name').val(nombre);
+    
+    var apellidos = localStorage.getItem('apellidos');
+     $('#surname').val(apellidos);
+    
+    M.updateTextFields();
     
     $("#iva_carrito select").change( function(){
         var opcion = parseFloat( $(this).val() ) || 0;
