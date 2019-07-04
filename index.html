@@ -850,19 +850,19 @@ p.flow-text {
         </div>
         
         <div class="row">
+             <div class="input-field col s12  m6 l4">
+                <i class="material-icons prefix">phone_android</i>
+                <input id="movil" name="movil" type="number" class="validate">
+                <label for="movil">Teléfono Móvil</label>
+                <span class="helper-text" data-error="Sólo números, por favor." data-success="BIEN"></span>
+            </div>
+            
             <div class="input-field col s12  m6 l4">
                 <i class="material-icons prefix">phone</i>
                 <input id="telefono" name="telefono" type="number" class="validate">
                 <label for="telefono">Teléfono</label>
                 <span class="helper-text" data-error="Sólo números, por favor." data-success="BIEN"></span>
             </div> 
-            
-            <div class="input-field col s12  m6 l4">
-                <i class="material-icons prefix">phone_android</i>
-                <input id="movil" name="movil" type="number" class="validate">
-                <label for="movil">Teléfono Móvil</label>
-                <span class="helper-text" data-error="Sólo números, por favor." data-success="BIEN"></span>
-            </div>
             
              <div class="input-field col s12  m6 l4">
                 <i class="material-icons prefix">mail_outline</i>
@@ -1635,11 +1635,35 @@ $(document).ready(function(){
         localStorage.setItem('apellidos', apellidos);
     });
     
+    $('#direccion').keyup( function(){
+        var direccion = $('#direccion').val();        
+        localStorage.setItem('direccion', direccion);
+    });
+    
+    $('#codigo_postal').keyup( function(){
+        var codigo_postal = $('#codigo_postal').val();        
+        localStorage.setItem('codigo_postal', codigo_postal);
+    });
+    
+    $('#localidad').keyup( function(){
+        var localidad = $('#localidad').val();        
+        localStorage.setItem('localidad', localidad);
+    });
+    
     var nombre = localStorage.getItem('nombre');
     $('#first_name').val(nombre);
     
     var apellidos = localStorage.getItem('apellidos');
-     $('#surname').val(apellidos);
+    $('#surname').val(apellidos);
+    
+    var direccion = localStorage.getItem('direccion');
+    $('#direccion').val(direccion)
+    
+    var codigo_postal = localStorage.getItem('codigo_postal');    
+    $('#codigo_postal').val(codigo_postal);
+    
+    var localidad = localStorage.getItem('localidad');      
+    $('#localidad').val(localidad);
     
     M.updateTextFields();
     
@@ -1871,14 +1895,20 @@ function populate_carrito(item_id, json_data_item){
             var product_total = parseFloat(producto.total);
             var card_price = currencyFormatES( product_price ); 
             var card_total = currencyFormatES( product_total );
-          
+            
+            var disabled="disabled";
+            if(qty>1){
+                var disabled="";
+            }
             //console.log(producto);
             
             if( $("#"+item_id).length == 0 ) {
                 //console.log("aún NO existe");
+                
+                
                 $("#subtotal_carrito").before(
                 //$("#shopping_cart").append( 
-                    '<li id="'+item_id+'" class="product_in_carrito" data-price="'+product_price+'" data-total-product="'+product_total+'"><h6>'+card_span+'<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6><div class="card-image"><div class="card-image-wrapper"><img src="'+card_image+'" ></div></div> <p class="product-ud-price">(La unidad sale a <b>'+card_price+'</b>€)</p><div class="input-field col s12"><button disabled class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button><input disabled class="center-align number" type="number" max="999" min="1" value="'+qty+'"><button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button></div><h5 class="right"><b>'+card_total+'</b>€</h5></li>'
+                    '<li id="'+item_id+'" class="product_in_carrito" data-price="'+product_price+'" data-total-product="'+product_total+'"><h6>'+card_span+'<a class="btn waves-effect waves-light red delete btn-reset right shop_out"><i class="material-icons right">close</i></a></h6><div class="card-image"><div class="card-image-wrapper"><img src="'+card_image+'" ></div></div> <p class="product-ud-price">(La unidad sale a <b>'+card_price+'</b>€)</p><div class="input-field col s12"><button disabled class="btn waves-effect waves-light remove"><i class="material-icons">remove</i></button><input '+disabled+' class="center-align number" type="number" max="999" min="1" value="'+qty+'"><button class="btn waves-effect waves-light pulse add"><i class="material-icons">add</i></button></div><h5 class="right"><b>'+card_total+'</b>€</h5></li>'
                 );
             }
             
